@@ -1,0 +1,70 @@
+{
+  "header": {
+    "home": "Home",
+    "about": "About Us",
+    "services": "Services",
+    "training": "Training & Development",
+    "team": "Our Team",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Aquilae Technologies",
+    "subtitle": "Route to Success...",
+    "cta": "Learn More"
+  },
+  "services": {
+    "title": "Our Services",
+    "subtitle": "Expert solutions tailored to your business needs",
+    "service1": {
+      "title": "HR Remote & Operation Support",
+      "description": "Strategic HR services to optimize your workforce"
+    },
+    "service2": {
+      "title": "IT Consulting Services",
+      "description": "Innovative technology solutions for your business"
+    },
+    "service3": {
+      "title": "Bookkeeping Offshore Services",
+      "description": "Precise accounting services for financial clarity"
+    },
+    "viewAll": "View All Services"
+  },
+  "about": {
+    "title": "About Us",
+    "subtitle": "The right people with the right expertise",
+    "description1": "We are a group of highly qualified professionals with wide experience in multiple business verticals blended along with an in-depth technology background driven by our passion to deliver high standards of results, with the key focus of maximizing business benefits for your organization.",
+    "description2": "Our vision is to deliver cutting-edge solutions that derive transformation in achieving your business goals. Creating reliable and efficient solutions helps our clients' businesses to enhance productivity and support growth.",
+    "description3": "Our mission is to ensure the value of time and money spent by our clients by providing cost-effective solutions that do not compromise on streamlining processes that save our clients valuable time. We assure and ensure results, keeping your vision and mission in our minds in every step of the way.",
+    "learnMore": "Learn More About Us"
+  },
+  "team": {
+    "title": "Our Team",
+    "subtitle": "Meet the experts behind our success",
+    "viewAll": "View Full Team"
+  },
+  "clients": {
+    "title": "Our Global Presence",
+    "subtitle": "Trusted by businesses worldwide",
+    "countries": "Countries",
+    "projects": "Projects",
+    "clients": "Clients"
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "Get in touch with our team",
+    "name": "Your Name",
+    "email": "Email Address",
+    "message": "Your Message",
+    "submit": "Send Message",
+    "address": "Address",
+    "phone": "Phone",
+    "email": "Email"
+  },
+  "footer": {
+    "copyright": "© 2025 AQUILAE TECHNOLOGIES PRIVATE LIMITED. All Rights Reserved.",
+    "links": {
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service"
+    }
+  }
+}

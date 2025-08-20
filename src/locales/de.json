@@ -1,0 +1,70 @@
+{
+  "header": {
+    "home": "Startseite",
+    "about": "Über Uns",
+    "services": "Dienstleistungen",
+    "training": "Schulung & Entwicklung",
+    "team": "Unser Team",
+    "contact": "Kontakt"
+  },
+  "hero": {
+    "title": "Aquilae Technologies",
+    "subtitle": "Weg zum Erfolg...",
+    "cta": "Mehr Erfahren"
+  },
+  "services": {
+    "title": "Unsere Dienstleistungen",
+    "subtitle": "Fachmännische Lösungen, die auf Ihre Geschäftsanforderungen zugeschnitten sind",
+    "service1": {
+      "title": "HR Fernunterstützung & Betrieb",
+      "description": "Strategische HR-Dienste zur Optimierung Ihrer Belegschaft"
+    },
+    "service2": {
+      "title": "IT-Beratungsdienste",
+      "description": "Innovative Technologielösungen für Ihr Unternehmen"
+    },
+    "service3": {
+      "title": "Offshore-Buchhaltungsdienste",
+      "description": "Präzise Buchhaltungsdienste für finanzielle Klarheit"
+    },
+    "viewAll": "Alle Dienstleistungen anzeigen"
+  },
+  "about": {
+    "title": "Über Uns",
+    "subtitle": "Die richtigen Leute mit dem richtigen Fachwissen",
+    "description1": "Wir sind eine Gruppe hochqualifizierter Fachleute mit umfangreicher Erfahrung in mehreren Geschäftsbereichen, verbunden mit einem tiefgreifenden technologischen Hintergrund, getrieben von unserer Leidenschaft, hohe Ergebnisstandards zu liefern, mit dem Schwerpunkt, den Geschäftsnutzen für Ihre Organisation zu maximieren.",
+    "description2": "Unsere Vision ist es, innovative Lösungen zu liefern, die eine Transformation bei der Erreichung Ihrer Geschäftsziele bewirken. Die Schaffung zuverlässiger und effizienter Lösungen hilft den Unternehmen unserer Kunden, die Produktivität zu steigern und das Wachstum zu unterstützen.",
+    "description3": "Unsere Mission ist es, den Wert der Zeit und des Geldes, das unsere Kunden ausgeben, zu sichern, indem wir kosteneffektive Lösungen anbieten, die keine Kompromisse bei der Straffung von Prozessen eingehen, die unseren Kunden wertvolle Zeit sparen. Wir versichern und garantieren Ergebnisse und behalten dabei Ihre Vision und Mission in jedem Schritt im Auge.",
+    "learnMore": "Mehr über uns erfahren"
+  },
+  "team": {
+    "title": "Unser Führungsteam",
+    "subtitle": "Treffen Sie die Experten hinter unserem Erfolg",
+    "viewAll": "Vollständiges Team ansehen"
+  },
+  "clients": {
+    "title": "Unsere Globale Präsenz",
+    "subtitle": "Weltweit von Unternehmen vertraut",
+    "countries": "Länder",
+    "projects": "Projekte",
+    "clients": "Kunden"
+  },
+  "contact": {
+    "title": "Kontaktieren Sie Uns",
+    "subtitle": "Nehmen Sie Kontakt mit unserem Team auf",
+    "name": "Ihr Name",
+    "email": "E-Mail-Adresse",
+    "message": "Ihre Nachricht",
+    "submit": "Nachricht senden",
+    "address": "Adresse",
+    "phone": "Telefon",
+    "email": "E-Mail"
+  },
+  "footer": {
+    "copyright": "© 2025 AQUILAE TECHNOLOGIES PRIVATE LIMITED. Alle Rechte vorbehalten.",
+    "links": {
+      "privacy": "Datenschutzrichtlinie",
+      "terms": "Nutzungsbedingungen"
+    }
+  }
+}
