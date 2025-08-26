@@ -86,9 +86,9 @@
   }
 
   .footer-height {
-    @apply py-6;
+    @apply py-3;
   }
-
+  
   /* Training Slider Styles */
   .training-swiper {
     @apply w-full h-96;

@@ -43,7 +43,7 @@ const TeamPage = () => {
   return (
     <div>
       {/* Hero Section */}
-      <section className="relative pt-32 pb-12 bg-black text-white">
+      <section className="relative pt-20 pb-8 bg-black text-white">
         <div className="absolute inset-0 z-[-1] opacity-20">
           <img 
             src="https://images.pexels.com/photos/3184325/pexels-photo-3184325.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" 
@@ -203,9 +203,7 @@ const TeamPage = () => {
               transition={{ duration: 0.5, delay: 0.4 }}
               className="flex flex-wrap gap-4 justify-center"
             >
-              <a href="#" className="btn bg-white text-orange-500 hover:bg-gray-100">
-                View Open Positions
-              </a>
+          
               <Link to="/contact?section=resume" className="btn bg-transparent border-2 border-white hover:bg-white hover:text-orange-500">
                 Submit Your Resume
               </Link>

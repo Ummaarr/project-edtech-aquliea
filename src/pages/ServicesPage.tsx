@@ -64,7 +64,7 @@ const ServicesPage = () => {
   return (
     <div>
       {/* Hero Section */}
-      <section className="relative pt-32 pb-12 bg-black text-white">
+      <section className="relative pt-20 pb-8 bg-black text-white">
         <div className="absolute inset-0 z-[-1] opacity-20">
           <img 
             src="https://images.pexels.com/photos/3184306/pexels-photo-3184306.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" 
@@ -118,9 +118,9 @@ const ServicesPage = () => {
       </section>
 
       {/* Why Choose Us */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-12 bg-gray-50">
         <div className="container-custom">
-          <div className="text-center mb-16">
+          <div className="text-center mb-10">
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -146,8 +146,15 @@ const ServicesPage = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="bg-white p-6 rounded-lg shadow-lg"
+              whileHover={{ 
+                scale: 1.02, 
+                y: -2
+              }}
+              transition={{ 
+                duration: 0.3,
+                ease: [0.4, 0, 0.2, 1]
+              }}
+              className="bg-white p-6 rounded-lg shadow-lg cursor-pointer"
             >
               <div className="text-orange-500 mb-4">
                 <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-orange-100">
@@ -164,8 +171,15 @@ const ServicesPage = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="bg-white p-6 rounded-lg shadow-lg"
+              whileHover={{ 
+                scale: 1.02, 
+                y: -2
+              }}
+              transition={{ 
+                duration: 0.3,
+                ease: [0.4, 0, 0.2, 1]
+              }}
+              className="bg-white p-6 rounded-lg shadow-lg cursor-pointer"
             >
               <div className="text-orange-500 mb-4">
                 <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-orange-100">
@@ -182,8 +196,15 @@ const ServicesPage = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.4 }}
-              className="bg-white p-6 rounded-lg shadow-lg"
+              whileHover={{ 
+                scale: 1.02, 
+                y: -2
+              }}
+              transition={{ 
+                duration: 0.3,
+                ease: [0.4, 0, 0.2, 1]
+              }}
+              className="bg-white p-6 rounded-lg shadow-lg cursor-pointer"
             >
               <div className="text-orange-500 mb-4">
                 <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-orange-100">
@@ -200,8 +221,15 @@ const ServicesPage = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.6 }}
-              className="bg-white p-6 rounded-lg shadow-lg"
+              whileHover={{ 
+                scale: 1.02, 
+                y: -2
+              }}
+              transition={{ 
+                duration: 0.3,
+                ease: [0.4, 0, 0.2, 1]
+              }}
+              className="bg-white p-6 rounded-lg shadow-lg cursor-pointer"
             >
               <div className="text-orange-500 mb-4">
                 <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-orange-100">

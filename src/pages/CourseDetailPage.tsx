@@ -261,8 +261,8 @@ const CourseDetailPage = () => {
   return (
     <div>
       {/* Hero Section */}
-      <section className="relative pt-32 pb-12 bg-black text-white">
-        <div className="absolute inset-0 z-[-1] opacity-30">
+      <section className="relative pt-20 pb-8 bg-black text-white">
+        <div className="absolute inset-0 z-[-1] opacity-20">
           <img 
             src={course.image} 
             alt={course.title} 
@@ -454,7 +454,7 @@ const CourseDetailPage = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-black text-white">
+      <section className="py-6 bg-orange-500 text-white">
         <div className="container-custom">
           <div className="text-center">
             <motion.h2
@@ -462,7 +462,7 @@ const CourseDetailPage = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="text-3xl md:text-4xl font-bold mb-6"
+              className="text-2xl md:text-3xl font-bold mb-3"
             >
               Start Your Learning Journey Today
             </motion.h2>
@@ -471,7 +471,7 @@ const CourseDetailPage = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="text-xl mb-8 max-w-2xl mx-auto"
+              className="text-lg mb-4 max-w-2xl mx-auto"
             >
               Join thousands of students who have transformed their careers with our expert-led training programs.
             </motion.p>
@@ -484,7 +484,7 @@ const CourseDetailPage = () => {
             >
               <button
                 onClick={handleRegisterNow}
-                className="btn bg-orange-500 hover:bg-orange-600 text-white"
+                className="btn bg-transparent border-2 border-white hover:bg-white hover:text-black"
               >
                 Register for This Course
               </button>

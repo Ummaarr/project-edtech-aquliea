@@ -118,12 +118,33 @@ const servicesData = {
 const ServiceDetailPage = () => {
   const { id } = useParams<{ id: string }>();
   const [service, setService] = useState<any>(null);
+
+  // Helper functions for navigation
+  const getPreviousService = (currentId: string) => {
+    const serviceOrder = ['finance', 'hr', 'tax', 'elearning', 'automation', 'it'];
+    const currentIndex = serviceOrder.indexOf(currentId);
+    const previousIndex = currentIndex === 0 ? serviceOrder.length - 1 : currentIndex - 1;
+    return serviceOrder[previousIndex];
+  };
+
+  const getNextService = (currentId: string) => {
+    const serviceOrder = ['finance', 'hr', 'tax', 'elearning', 'automation', 'it'];
+    const currentIndex = serviceOrder.indexOf(currentId);
+    const nextIndex = currentIndex === serviceOrder.length - 1 ? 0 : currentIndex + 1;
+    return serviceOrder[nextIndex];
+  };
   
   useEffect(() => {
     window.scrollTo(0, 0);
     
+    console.log('Service ID from URL:', id); // Debug log
+    console.log('Available services:', Object.keys(servicesData)); // Debug log
+    
     if (id && id in servicesData) {
       setService(servicesData[id as keyof typeof servicesData]);
+      console.log('Service found:', servicesData[id as keyof typeof servicesData]); // Debug log
+    } else {
+      console.log('Service not found for ID:', id); // Debug log
     }
   }, [id]);
 
@@ -132,6 +153,8 @@ const ServiceDetailPage = () => {
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
           <h2 className="text-2xl font-bold mb-4">Service Not Found</h2>
+          <p className="text-gray-600 mb-4">Service ID: {id}</p>
+          <p className="text-gray-600 mb-6">Available services: {Object.keys(servicesData).join(', ')}</p>
           <Link to="/services" className="btn btn-primary">
             Back to Services
           </Link>
@@ -143,8 +166,8 @@ const ServiceDetailPage = () => {
   return (
     <div>
       {/* Hero Section */}
-      <section className="relative pt-32 pb-12 bg-black text-white">
-        <div className="absolute inset-0 z-[-1] opacity-30">
+      <section className="relative pt-20 pb-8 bg-black text-white">
+        <div className="absolute inset-0 z-[-1] opacity-20">
           <img 
             src={service.image} 
             alt={service.title} 
@@ -193,7 +216,6 @@ const ServiceDetailPage = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
               >
-                <h2 className="text-3xl font-bold mb-6">Overview</h2>
                 <p className="text-gray-700 mb-6 text-lg">{service.description}</p>
                 
                 {service.content.map((paragraph: string, index: number) => (
@@ -211,20 +233,51 @@ const ServiceDetailPage = () => {
                 transition={{ duration: 0.5, delay: 0.2 }}
                 className="bg-gray-50 p-6 rounded-lg sticky top-24"
               >
-                <h3 className="text-xl font-bold mb-6">Key Features</h3>
-                <ul className="space-y-4">
+                <h3 className="text-xl font-bold mb-5">Key Features</h3>
+                <ul className="space-y-3">
                   {service.features.map((feature: string, index: number) => (
                     <li key={index} className="flex items-start">
-                      <CheckCircle size={20} className="text-orange-500 mr-2 mt-1 flex-shrink-0" />
-                      <span>{feature}</span>
+                      <CheckCircle size={18} className="text-orange-500 mr-2 mt-0.5 flex-shrink-0" />
+                      <span className="text-base">{feature}</span>
                     </li>
                   ))}
                 </ul>
                 
-                <div className="mt-8">
-                  <Link to="/contact" className="btn btn-primary w-full text-center">
-                    Get Started
-                  </Link>
+                <div className="mt-7">
+                  {/* Service Navigation */}
+                  <div className="flex items-center justify-between pt-4 border-t border-gray-200">
+                    {/* Previous Service - Only show if not the first service */}
+                    {id !== 'finance' && (
+                      <Link 
+                        to={`/services/${getPreviousService(id || 'finance')}`}
+                        className="flex items-center text-sm text-gray-600 hover:text-orange-500 transition-colors duration-300"
+                      >
+                        <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                        </svg>
+                        <span>Previous</span>
+                      </Link>
+                    )}
+
+                    {/* Spacer for first service to maintain layout */}
+                    {id === 'finance' && <div></div>}
+
+                    {/* Next Service - Only show if not the last service */}
+                    {id !== 'it' && (
+                      <Link 
+                        to={`/services/${getNextService(id || 'finance')}`}
+                        className="flex items-center text-sm text-gray-600 hover:text-orange-500 transition-colors duration-300"
+                      >
+                        <span>Next</span>
+                        <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
+                      </Link>
+                    )}
+
+                    {/* Spacer for last service to maintain layout */}
+                    {id === 'it' && <div></div>}
+                  </div>
                 </div>
               </motion.div>
             </div>
@@ -233,7 +286,7 @@ const ServiceDetailPage = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-black text-white">
+      <section className="py-6 bg-orange-500 text-white">
         <div className="container-custom">
           <div className="text-center">
             <motion.h2
@@ -241,7 +294,7 @@ const ServiceDetailPage = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="text-3xl md:text-4xl font-bold mb-6 text-white"
+              className="text-2xl md:text-3xl font-bold mb-3"
             >
               Ready to Transform Your Business?
             </motion.h2>
@@ -250,7 +303,7 @@ const ServiceDetailPage = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="text-xl mb-8 max-w-2xl mx-auto text-white"
+              className="text-lg mb-4 max-w-2xl mx-auto"
             >
               Contact us today to discuss how we can help with your {service.title.toLowerCase()} needs.
             </motion.p>
@@ -259,8 +312,9 @@ const ServiceDetailPage = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.4 }}
+              className="flex flex-wrap gap-4 justify-center"
             >
-              <Link to="/contact" className="btn bg-orange-500 hover:bg-orange-600 text-white">
+              <Link to="/contact" className="btn bg-transparent border-2 border-white hover:bg-white hover:text-orange-500">
                 Contact Us
               </Link>
             </motion.div>

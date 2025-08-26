@@ -14,7 +14,7 @@ const AboutPage = () => {
   return (
     <div>
       {/* Hero Section */}
-      <section className="relative pt-32 pb-12 bg-black text-white">
+      <section className="relative pt-20 pb-8 bg-black text-white">
         <div className="absolute inset-0 z-[-1] opacity-20">
           <img 
             src="https://images.pexels.com/photos/3183186/pexels-photo-3183186.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" 
@@ -118,7 +118,17 @@ const AboutPage = () => {
             <h2 className="text-3xl font-bold mb-8 text-center">Our Values</h2>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <div className="bg-white p-6 rounded-lg shadow-lg">
+              <motion.div 
+                className="bg-white p-6 rounded-lg shadow-lg cursor-pointer"
+                whileHover={{ 
+                  scale: 1.02, 
+                  y: -2
+                }}
+                transition={{ 
+                  duration: 0.3,
+                  ease: [0.4, 0, 0.2, 1]
+                }}
+              >
                 <div className="text-orange-500 mb-4">
                   <CheckCircle size={40} />
                 </div>
@@ -126,9 +136,19 @@ const AboutPage = () => {
                 <p className="text-gray-600">
                   Striving for excellence in every project and service we provide.
                 </p>
-              </div>
+              </motion.div>
               
-              <div className="bg-white p-6 rounded-lg shadow-lg">
+              <motion.div 
+                className="bg-white p-6 rounded-lg shadow-lg cursor-pointer"
+                whileHover={{ 
+                  scale: 1.02, 
+                  y: -2
+                }}
+                transition={{ 
+                  duration: 0.3,
+                  ease: [0.4, 0, 0.2, 1]
+                }}
+              >
                 <div className="text-orange-500 mb-4">
                   <CheckCircle size={40} />
                 </div>
@@ -136,9 +156,19 @@ const AboutPage = () => {
                 <p className="text-gray-600">
                   Operating with honesty, transparency, and ethical standards.
                 </p>
-              </div>
+              </motion.div>
               
-              <div className="bg-white p-6 rounded-lg shadow-lg">
+              <motion.div 
+                className="bg-white p-6 rounded-lg shadow-lg cursor-pointer"
+                whileHover={{ 
+                  scale: 1.02, 
+                  y: -2
+                }}
+                transition={{ 
+                  duration: 0.3,
+                  ease: [0.4, 0, 0.2, 1]
+                }}
+              >
                 <div className="text-orange-500 mb-4">
                   <CheckCircle size={40} />
                 </div>
@@ -146,9 +176,19 @@ const AboutPage = () => {
                 <p className="text-gray-600">
                   Embracing innovative technologies and approaches to solve problems.
                 </p>
-              </div>
+              </motion.div>
               
-              <div className="bg-white p-6 rounded-lg shadow-lg">
+              <motion.div 
+                className="bg-white p-6 rounded-lg shadow-lg cursor-pointer"
+                whileHover={{ 
+                  scale: 1.02, 
+                  y: -2
+                }}
+                transition={{ 
+                  duration: 0.3,
+                  ease: [0.4, 0, 0.2, 1]
+                }}
+              >
                 <div className="text-orange-500 mb-4">
                   <CheckCircle size={40} />
                 </div>
@@ -156,14 +196,14 @@ const AboutPage = () => {
                 <p className="text-gray-600">
                   Placing our clients' needs at the center of everything we do.
                 </p>
-              </div>
+              </motion.div>
             </div>
           </motion.div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-orange-500 text-white">
+      <section className="py-6 bg-orange-500 text-white">
         <div className="container-custom">
           <div className="text-center">
             <motion.h2
@@ -171,16 +211,16 @@ const AboutPage = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="text-3xl md:text-4xl font-bold mb-6"
+              className="text-2xl md:text-3xl font-bold mb-3"
             >
-              Ready to Work With Us?
+              Ready to Collaborate With Us?
             </motion.h2>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="text-xl mb-8 max-w-2xl mx-auto"
+              className="text-lg mb-4 max-w-2xl mx-auto"
             >
               Explore our services or get in touch to discuss your business needs.
             </motion.p>
@@ -191,9 +231,7 @@ const AboutPage = () => {
               transition={{ duration: 0.5, delay: 0.4 }}
               className="flex flex-wrap gap-4 justify-center"
             >
-              <Link to="/services" className="btn bg-white text-orange-500 hover:bg-gray-100">
-                Our Services
-              </Link>
+             
               <Link to="/contact" className="btn bg-transparent border-2 border-white hover:bg-white hover:text-orange-500">
                 Contact Us
               </Link>

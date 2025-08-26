@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import ScrollToTop from './components/ScrollToTop';
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import ServicesPage from './pages/ServicesPage';
@@ -11,6 +12,7 @@ import TrainingPage from './pages/TrainingPage';
 import CourseDetailPage from './pages/CourseDetailPage';
 import TeamPage from './pages/TeamPage';
 import ContactPage from './pages/ContactPage';
+import ResumeSubmissionPage from './pages/ResumeSubmissionPage';
 
 function App() {
   useEffect(() => {
@@ -20,6 +22,7 @@ function App() {
   return (
     <div className="font-sans bg-orange-50">
       <Header />
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutPage />} />
@@ -29,6 +32,7 @@ function App() {
         <Route path="/course/:id" element={<CourseDetailPage />} />
         <Route path="/team" element={<TeamPage />} />
         <Route path="/contact" element={<ContactPage />} />
+        <Route path="/resume-submission" element={<ResumeSubmissionPage />} />
       </Routes>
       <Footer />
     </div>

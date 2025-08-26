@@ -199,7 +199,7 @@ const TrainingPage = () => {
       </button>
 
       {/* Hero Section */}
-      <section className="relative pt-32 pb-12 bg-black text-white">
+      <section className="relative pt-20 pb-8 bg-black text-white">
         <div className="absolute inset-0 z-[-1] opacity-20">
           <img 
             src="https://images.pexels.com/photos/6694543/pexels-photo-6694543.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" 
@@ -235,7 +235,7 @@ const TrainingPage = () => {
       </section>
 
       {/* Statistics Section */}
-      <section className="py-16 bg-white">
+      <section className="py-12 bg-white">
         <div className="container-custom">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {stats.map((stat, index) => (
@@ -264,9 +264,9 @@ const TrainingPage = () => {
       </section>
 
       {/* Courses Section - MOVED TO FRONT */}
-      <section className="py-20">
+      <section className="py-12">
         <div className="container-custom">
-          <div className="text-center mb-16">
+          <div className="text-center mb-10">
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -288,7 +288,7 @@ const TrainingPage = () => {
           </div>
 
           {/* Featured Courses */}
-          <div className="mb-16">
+          <div className="mb-10">
             <h3 className="text-2xl font-bold mb-8">Featured Courses</h3>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -377,9 +377,9 @@ const TrainingPage = () => {
       </section>
 
       {/* Our Trainers Section - MOVED AFTER COURSES */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-12 bg-gray-50">
         <div className="container-custom">
-            <div className="text-center mb-12">
+            <div className="text-center mb-8">
               <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -455,9 +455,9 @@ const TrainingPage = () => {
       </section>
 
       {/* Introduction */}
-      <section className="py-20">
+      <section className="py-12">
         <div className="container-custom">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center mb-10">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -473,7 +473,7 @@ const TrainingPage = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
             >
-              <h2 className="text-3xl font-bold mb-6">Nurturing Future Leaders</h2>
+              <h2 className="text-3xl font-bold mb-4">Nurturing Future Leaders</h2>
               <p className="text-gray-600 mb-6">
                 At Aquilae, we don't just offer services; we invest in the future. Explore a world of growth with our Training and Development programs, extending beyond corporate boundaries. Our commitment goes beyond business – we're dedicated to nurturing young minds through our partnership with Unmaze.
               </p>
@@ -493,7 +493,7 @@ const TrainingPage = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="text-3xl font-bold mb-12 text-center"
+              className="text-3xl font-bold mb-8 text-center"
             >
               Our Program Types
             </motion.h2>
@@ -521,9 +521,9 @@ const TrainingPage = () => {
       </section>
 
       {/* Partnerships Section */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-12 bg-gray-50">
         <div className="container-custom">
-          <div className="text-center mb-16">
+          <div className="text-center mb-10">
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -551,7 +551,7 @@ const TrainingPage = () => {
       </section>
 
       {/* Student Feedback Section */}
-      <section className="py-20 bg-black text-white">
+      <section className="py-12 bg-black text-white">
         <div className="container-custom">
           <div className="text-center mb-16">
             <motion.h2
@@ -568,7 +568,7 @@ const TrainingPage = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="h-1 w-24 bg-orange-500 mx-auto mb-8"
+              className="h-1 w-24 bg-orange-500 mx-auto mb-6"
             ></motion.div>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -616,7 +616,7 @@ const TrainingPage = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="text-3xl md:text-4xl font-bold mb-6"
+              className="text-3xl md:text-4xl font-bold mb-4"
             >
               Ready to Enhance Your Skills?
             </motion.h2>

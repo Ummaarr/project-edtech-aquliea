@@ -65,7 +65,8 @@ const teamMembers = [
 const heroTexts = [
   "Route to Success...",
   "Digitize. Transform. Grow.",
-  "Boost your business with us."
+  "Boost your business with us.",
+  "Training & development"
 ];
 
 // Floating particles component
@@ -127,8 +128,8 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.15,
-      delayChildren: 0.2
+      staggerChildren: 0.1,
+      delayChildren: 0.1
     }
   }
 };
@@ -137,9 +138,9 @@ const containerVariants = {
 const cardVariants = {
   hidden: { 
     opacity: 0, 
-    y: 80,
-    scale: 0.8,
-    rotateX: -15
+    y: 60,
+    scale: 0.92,
+    rotateX: -8
   },
   visible: { 
     opacity: 1, 
@@ -147,18 +148,21 @@ const cardVariants = {
     scale: 1,
     rotateX: 0,
     transition: {
-      duration: 0.8,
-      ease: [0.25, 0.46, 0.45, 0.94]
+      type: "spring",
+      stiffness: 260,
+      damping: 26,
+      mass: 0.6
     }
   },
   hover: {
-    y: -15,
-    scale: 1.05,
-    rotateY: 5,
-    boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)",
+    y: -8,
+    scale: 1.02,
+    rotateY: 2,
+    boxShadow: "0 20px 40px -12px rgba(0, 0, 0, 0.15)",
     transition: {
-      duration: 0.4,
-      ease: "easeOut"
+      type: "spring",
+      stiffness: 300,
+      damping: 24
     }
   }
 };
@@ -344,7 +348,7 @@ const HomePage = () => {
               transition={{ duration: 0.8, delay: 0.7 }}
               className="flex flex-wrap gap-4 justify-center"
             >
-              <Link to="/about" className="btn bg-white text-orange-500 hover:bg-gray-100 transform hover:scale-105 transition-all">
+              <Link to="/about" className="btn border-2 border-white text-white hover:bg-white hover:text-orange-500 transform hover:scale-105 transition-all">
                 Learn More
               </Link>
               <Link to="/contact" className="btn border-2 border-white text-white hover:bg-white hover:text-orange-500 transform hover:scale-105 transition-all">
@@ -365,98 +369,96 @@ const HomePage = () => {
       </section>
 
       {/* About Us Section */}
-      <section className="relative py-20 bg-orange-50" id="content">
-        <div className="absolute inset-0 z-0">
-          <img 
-            src="https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" 
-            alt="About Background" 
-            className="w-full h-full object-cover opacity-10"
-          />
-        </div>
-        <div className="container-custom relative z-10">
-          <div className="text-center mb-16">
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="section-title"
-            >
-              About Us
-            </motion.h2>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="text-black max-w-2xl mx-auto mb-8"
-            >
-              We are a group of highly qualified professionals with wide experience in multiple business verticals, driven by our passion to deliver high standards of results.
-            </motion.p>
-            <Link 
-              to="/about" 
-              className="inline-flex items-center text-orange-500 font-medium hover:text-orange-600"
-            >
-              Learn More About Us <ArrowRight size={16} className="ml-2" />
-            </Link>
-          </div>
-        </div>
-      </section>
+<section className="relative py-52 bg-orange-50" id="content">
+  {/* Background image */}
+  <div className="absolute inset-0 z-0">
+    <img
+      src="https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+      alt="About Background"
+      className="w-full h-full object-cover opacity-20" // 🔥 increased visibility
+    />
+  </div>
 
-      {/* Our Offerings Section */}
-      <section className="py-20 relative overflow-hidden" ref={offeringsRef}>
-        {/* Animated Background */}
-        <AnimatedBackground />
-        
-        {/* Floating Particles */}
-        <FloatingParticles />
-        
-        {/* Parallax Background Elements */}
-        <motion.div
-          className="absolute inset-0 opacity-5"
-          style={{
-            transform: `translate(${mousePosition.x * 20}px, ${mousePosition.y * 20}px)`,
-          }}
-        >
-          <div className="absolute top-10 left-10 w-32 h-32 bg-orange-300 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-20 right-20 w-48 h-48 bg-orange-200 rounded-full blur-3xl"></div>
-          <div className="absolute top-1/2 left-1/3 w-24 h-24 bg-orange-400 rounded-full blur-2xl"></div>
-        </motion.div>
+  <div className="container-custom relative z-10">
+    <div className="text-center max-w-3xl mx-auto">
+      {/* Animated Heading */}
+      <motion.h2
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="section-title mb-6"
+      >
+        About Us
+      </motion.h2>
 
+      {/* Paragraphs for balance */}
+      <motion.p
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        className="text-black mb-4 text-center"
+      >
+        We are a group of highly qualified professionals with wide experience in
+        multiple business verticals, driven by our passion to deliver high
+        standards of results.
+      </motion.p>
+
+      {/* ✅ Extra lines to fill empty space */}
+      <motion.p
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, delay: 0.4 }}
+        className="text-black mb-4 text-center"
+      >
+        Our mission is to empower businesses through innovative solutions and a
+        customer-first approach that ensures measurable success.
+      </motion.p>
+
+      <motion.p
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, delay: 0.6 }}
+        className="text-black mb-8 text-center"
+      >
+        With expertise across industries, we help organizations digitize,
+        transform, and grow with confidence in a fast-changing world.
+      </motion.p>
+
+      {/* CTA Button */}
+      <Link
+        to="/about"
+        className="inline-flex items-center text-orange-500 font-medium hover:text-orange-600"
+      >
+        Learn More About Us
+        <ArrowRight size={16} className="ml-2" />
+      </Link>
+    </div>
+  </div>
+</section>
+
+
+  {/* Our Offerings Section */}
+      <section className="relative pt-12 pb-20 overflow-hidden" ref={offeringsRef}>
         <motion.div 
           className="container-custom relative z-10"
           initial="hidden"
           animate={controls}
           variants={containerVariants}
         >
-          <div className="text-center mb-16">
+          <div className="text-center mb-8">
             <motion.h2
-              variants={titleVariants}
-              className="section-title overflow-hidden"
+              className="section-title"
             >
-              {titleText.split("").map((letter, index) => (
-                <motion.span
-                  key={index}
-                  variants={letterVariants}
-                  className="inline-block"
-                  style={{ transformOrigin: "50% 50%" }}
-                >
-                  {letter === " " ? "\u00A0" : letter}
-                </motion.span>
-              ))}
+              Our Offerings
             </motion.h2>
-            
-            <motion.div
-              initial={{ scaleX: 0 }}
-              whileInView={{ scaleX: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1, delay: 0.5 }}
-              className="h-1 w-24 bg-orange-500 mx-auto mb-8 origin-left"
-            />
-            
+            {/* Removed extra divider to avoid double lines and excess space */}
             <motion.p
               variants={textRevealVariants}
-              className="text-black max-w-2xl mx-auto"
+              className="text-black max-w-xl mx-auto mt-4"
             >
               Expert solutions tailored to your business needs
             </motion.p>
@@ -467,112 +469,87 @@ const HomePage = () => {
             variants={containerVariants}
           >
             {services.map((service, index) => (
-              <motion.div
-                key={service.id}
-                variants={cardVariants}
-                whileHover="hover"
-                className="relative bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 flex flex-col h-full group cursor-pointer overflow-hidden"
-                style={{
-                  transformStyle: "preserve-3d",
-                  perspective: "1000px"
-                }}
-              >
-                {/* Card glow effect */}
+              <Link key={service.id} to={service.link} className="group block">
                 <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-orange-400 to-orange-600 opacity-0 group-hover:opacity-10 transition-opacity duration-500 rounded-2xl"
-                  initial={{ scale: 0.8 }}
-                  whileHover={{ scale: 1.1 }}
-                  transition={{ duration: 0.5 }}
-                />
-                
-                {/* Animated border */}
-                <motion.div
-                  className="absolute inset-0 rounded-2xl"
+                  variants={cardVariants}
+                  whileHover="hover"
+                  className="relative bg-white p-8 rounded-2xl border border-orange-100 transition-transform duration-300 ease-out will-change-transform flex flex-col h-full cursor-pointer overflow-hidden transform-gpu"
+                  layout
                   style={{
-                    background: "linear-gradient(45deg, transparent, #f97316, transparent)",
-                    padding: "2px",
+                    transformStyle: "preserve-3d",
+                    perspective: "1000px"
                   }}
-                  initial={{ opacity: 0 }}
-                  whileHover={{ opacity: 1 }}
-                  transition={{ duration: 0.3 }}
                 >
-                  <div className="w-full h-full bg-white rounded-2xl" />
-                </motion.div>
-                
-                <div className="relative z-10">
-                  <motion.div 
-                    className="text-orange-500 mb-6 flex justify-center"
-                    variants={iconVariants}
-                    initial="initial"
-                    whileHover="hover"
-                    animate="pulse"
-                  >
-                    {service.icon}
-                  </motion.div>
-                  
-                  <motion.h3 
-                    className="text-xl font-semibold mb-4 group-hover:text-orange-600 transition-colors duration-300 text-center"
-                    variants={textRevealVariants}
-                  >
-                    {service.title}
-                  </motion.h3>
-                  
-                  <motion.p 
-                    className="text-gray-600 mb-8 flex-grow text-center leading-relaxed"
-                    variants={textRevealVariants}
-                  >
-                    {service.description}
-                  </motion.p>
-                  
+                  {/* Card glow effect */}
                   <motion.div
-                    className="text-center"
-                    whileHover={{ scale: 1.05 }}
-                    transition={{ duration: 0.2 }}
+                    className="absolute inset-4 bg-gradient-to-r from-orange-400 to-orange-600 opacity-0 group-hover:opacity-10 transition-opacity duration-500 rounded-xl pointer-events-none"
+                    initial={{ scale: 1 }}
+                    transition={{ duration: 0.5 }}
+                  />
+                  
+                  {/* Animated border */}
+                  <motion.div
+                    className="absolute inset-0 rounded-2xl pointer-events-none"
+                    style={{
+                      background: "linear-gradient(45deg, transparent, #f97316, transparent)",
+                      padding: "2px",
+                    }}
+                    initial={{ opacity: 0 }}
+                    whileHover={{ opacity: 1 }}
+                    transition={{ duration: 0.3 }}
                   >
-                    <Link 
-                      to={service.link} 
-                      className="inline-flex items-center text-orange-500 font-semibold hover:text-orange-600 group-hover:translate-x-1 transition-all duration-300 text-lg"
-                    >
-                      Learn More 
-                      <motion.div
-                        className="ml-2"
-                        variants={arrowVariants}
-                        initial="initial"
-                        whileHover="hover"
-                      >
-                        <ArrowRight size={20} />
-                      </motion.div>
-                    </Link>
+                    <div className="w-full h-full bg-white rounded-2xl" />
                   </motion.div>
-                </div>
-                
-                {/* Floating elements inside card */}
-                <motion.div
-                  className="absolute top-4 right-4 w-3 h-3 bg-orange-300 rounded-full opacity-30"
-                  animate={{
-                    y: [0, -10, 0],
-                    opacity: [0.3, 0.7, 0.3],
-                  }}
-                  transition={{
-                    duration: 3,
-                    repeat: Infinity,
-                    delay: index * 0.5,
-                  }}
-                />
-                
-                <motion.div
-                  className="absolute bottom-4 left-4 w-2 h-2 bg-orange-400 rounded-full opacity-40"
-                  animate={{
-                    x: [0, 10, 0],
-                    opacity: [0.4, 0.8, 0.4],
-                  }}
-                  transition={{
-                    duration: 4,
-                    repeat: Infinity,
-                    delay: index * 0.7,
-                  }}
-                />
-              </motion.div>
+                  
+                  <div className="relative z-10">
+                    <motion.div 
+                      className="text-orange-500 mb-6 flex justify-center"
+                      variants={iconVariants}
+                      initial="initial"
+                      whileHover="hover"
+                      animate="pulse"
+                    >
+                      {service.icon}
+                    </motion.div>
+                    
+                    <motion.h3 
+                      className="text-xl font-semibold mb-4 group-hover:text-orange-600 transition-colors duration-300 text-center"
+                      variants={textRevealVariants}
+                    >
+                      {service.title}
+                    </motion.h3>
+                    
+                    <motion.p 
+                      className="text-gray-600 mb-8 flex-grow text-center leading-relaxed"
+                      variants={textRevealVariants}
+                    >
+                      {service.description}
+                    </motion.p>
+                    
+                    <motion.div
+                      className="text-center"
+                      whileHover={{ scale: 1.05 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <span 
+                        className="inline-flex items-center text-orange-500 font-semibold group-hover:translate-x-1 transition-all duration-300 text-lg"
+                      >
+                        Learn More 
+                        <motion.div
+                          className="ml-2"
+                          variants={arrowVariants}
+                          initial="initial"
+                          whileHover="hover"
+                        >
+                          <ArrowRight size={20} />
+                        </motion.div>
+                      </span>
+                    </motion.div>
+                  </div>
+                  
+                  {/* Floating elements inside card */}
+                </motion.div>
+              </Link>
             ))}
           </motion.div>
           
@@ -616,11 +593,11 @@ const HomePage = () => {
           </motion.div>
         </motion.div>
       </section>
-
+      
       {/* Our Team Section */}
-      <section className="py-20 bg-orange-50">
+      <section className="py-16 bg-orange-50">
         <div className="container-custom">
-          <div className="text-center mb-16">
+          <div className="text-center mb-10">
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -641,15 +618,17 @@ const HomePage = () => {
             </motion.p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
             {teamMembers.map((member, index) => (
               <motion.div
                 key={member.name}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
+                whileHover={{ y: -5, scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white rounded-lg overflow-hidden shadow-lg group"
+                transition={{ duration: 0.3, delay: index * 0.1 }}
+                  className="bg-white rounded-lg overflow-hidden shadow-lg group cursor-pointer"
               >
                 <div className="relative overflow-hidden">
                   <img 
@@ -684,7 +663,7 @@ const HomePage = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-orange-500 text-white">
+      <section className="py-6 bg-orange-500 text-white">
         <div className="container-custom">
           <div className="text-center">
             <motion.h2
@@ -692,7 +671,7 @@ const HomePage = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="text-3xl md:text-4xl font-bold mb-6"
+              className="text-xl md:text-2xl font-bold mb-2"
             >
               Ready to Transform Your Business?
             </motion.h2>
@@ -701,18 +680,17 @@ const HomePage = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="text-xl mb-8 max-w-2xl mx-auto"
+              className="text-base mb-3 max-w-lg mx-auto"
             >
               Contact us today to discuss how we can help your business grow and succeed.
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.4 }}
-              whileHover={{ scale: 1.05 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.7 }}
+              className="flex flex-wrap gap-2 justify-center"
             >
-              <Link to="/contact" className="btn bg-white text-orange-500 hover:bg-gray-100">
+              <Link to="/contact" className="btn border-2 border-white text-white hover:bg-white hover:text-orange-500 transform hover:scale-105 transition-all">
                 Get in Touch
               </Link>
             </motion.div>

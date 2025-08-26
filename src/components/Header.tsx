@@ -51,25 +51,25 @@ const Header = () => {
 
   return (
     <header 
-      className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 transition-all duration-300 rounded-full ${
-        scrolled ? 'w-[95%] bg-white shadow-lg' : 'w-[90%] bg-white/80'
-      }`}
+      className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 transition-all duration-300 rounded-full 
+      ${scrolled ? 'w-[93%] shadow-lg' : 'w-[88%]'} 
+      bg-[url('/images/header-bg.png')] bg-repeat bg-center bg-cover`}
     >
       <div className="container-custom h-full">
-        <div className="flex items-center h-16">
+        <div className="flex items-center h-14">
           <Link to="/" className="flex items-center mr-16">
             <img 
               src={`${import.meta.env.BASE_URL}./images/LOGO_-_AQUILAE-removebg-preview.png`}
               alt="Aquilae Technologies" 
-              className="h-14 w-auto" 
+              className="h-11 w-auto" 
             />
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center flex-grow justify-end space-x-8">
+          <nav className="hidden lg:flex items-center flex-grow justify-end space-x-9">
             <Link 
               to="/" 
-              className={`text-sm uppercase tracking-wide font-medium ${
+              className={`text-base uppercase tracking-wide font-medium ${
                 location.pathname === '/' 
                   ? 'text-orange-500' 
                   : 'text-black hover:text-orange-500'
