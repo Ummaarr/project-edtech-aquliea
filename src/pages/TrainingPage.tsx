@@ -5,6 +5,59 @@ import { BookOpen, Clock, Award, GraduationCap, TrendingUp, CreditCard, BarChart
 import MOUSlider from '../components/MOUSlider';
 import TrainingSlider from '../components/TrainingSlider';
 
+// Animation variants similar to "Our Offerings"
+const coursesContainerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.1
+    }
+  }
+};
+
+const courseCardVariants = {
+  hidden: {
+    opacity: 0,
+    y: 60,
+    scale: 0.92,
+    rotateX: -8
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    rotateX: 0,
+    transition: {
+      type: 'spring',
+      stiffness: 260,
+      damping: 26,
+      mass: 0.6
+    }
+  },
+  hover: {
+    y: -8,
+    scale: 1.02,
+    rotateY: 2,
+    boxShadow: '0 20px 40px -12px rgba(0, 0, 0, 0.15)',
+    transition: {
+      type: 'spring',
+      stiffness: 300,
+      damping: 24
+    }
+  }
+};
+
+const courseIconVariants = {
+  initial: { scale: 1, rotate: 0 },
+  hover: {
+    scale: 1.2,
+    rotate: 10,
+    transition: { duration: 0.3, ease: 'easeInOut' }
+  }
+};
+
 // Training Statistics
 const stats = [
   { value: '10000+', label: 'Students Trained' },
@@ -15,13 +68,13 @@ const stats = [
 // Course data
 const courses = [
   {
-    id: 'stock-trading',
-    title: 'Stock, Currency & Commodity Trading',
-    description: 'Master the fundamentals of trading in stocks, currencies, and commodities with our comprehensive course.',
-    icon: <TrendingUp size={24} />,
-    duration: '8 weeks',
-    level: 'Beginner to Intermediate',
-    featured: true
+    id: 'corporate-success',
+    title: 'Impetuous to Corporate Success',
+    description: 'Develop leadership skills and business acumen necessary for driving corporate success and growth.',
+    icon: <Target size={24} />,
+    duration: '6 weeks',
+    level: 'Intermediate to Advanced',
+    featured: false
   },
   {
     id: 'capital-market',
@@ -51,13 +104,13 @@ const courses = [
     featured: true
   },
   {
-    id: 'corporate-success',
-    title: 'Impetuous to Corporate Success',
-    description: 'Develop leadership skills and business acumen necessary for driving corporate success and growth.',
-    icon: <Target size={24} />,
-    duration: '6 weeks',
-    level: 'Intermediate to Advanced',
-    featured: false
+    id: 'stock-trading',
+    title: 'Stock, Currency & Commodity Trading',
+    description: 'Master the fundamentals of trading in stocks, currencies, and commodities with our comprehensive course.',
+    icon: <TrendingUp size={24} />,
+    duration: '8 weeks',
+    level: 'Beginner to Intermediate',
+    featured: true
   },
   {
     id: 'gst',
@@ -97,7 +150,7 @@ const programTypes = [
 // Trainers data
 const featuredTrainer = {
   id: 1,
-  name: 'C.A. ANAND PATTABIRAMAN',
+  name: 'ANAND PATTABIRAMAN',
   title: 'Director & Founder',
   subtitle: 'Aquilae Technologies Private Limited',
   description: 'Anand Pattbiraman is a Chartered Accountant by profession, preferred coach and mentor to Upskill the students. Anand is a Passionate Trainer, Motivating Speaker and Patient Listener. He breaks complex topics into simple examples to enable students understand with ease.',
@@ -132,7 +185,7 @@ const otherTrainers = [
   {
     id: 6,
     name: 'Balajhi Devanathan',
-    title: 'Finance Director & Trainer',
+    title: 'Finance Director',
     subtitle: 'Chartered Accountant',
     description: 'A Chartered Accountant with more than 15 years of experience in operations and finance. He has nurtured small and micro enterprises to new heights after his MBA from Pace University, New York.',
     image: './images/team/Balajhi-sir-image.jpg'
@@ -235,7 +288,7 @@ const TrainingPage = () => {
       </section>
 
       {/* Statistics Section */}
-      <section className="py-12 bg-white">
+      <section className="py-16 bg-white">
         <div className="container-custom">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {stats.map((stat, index) => (
@@ -266,7 +319,7 @@ const TrainingPage = () => {
       {/* Courses Section - MOVED TO FRONT */}
       <section className="py-12">
         <div className="container-custom">
-          <div className="text-center mb-10">
+          <div className="text-center mb-12">
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -288,25 +341,32 @@ const TrainingPage = () => {
           </div>
 
           {/* Featured Courses */}
-          <div className="mb-10">
-            <h3 className="text-2xl font-bold mb-8">Featured Courses</h3>
+          <div className="mb-12">
+            <h3 className="text-2xl font-bold mb-6">Featured Courses</h3>
             
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {courses.filter(course => course.featured).map((course, index) => (
+            <motion.div 
+              className="grid grid-cols-1 md:grid-cols-3 gap-6"
+              variants={coursesContainerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: '-100px' }}
+            >
+              {courses.filter(course => course.featured).map((course) => (
                 <motion.div
                   key={course.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
                   className="bg-white rounded-lg overflow-hidden shadow-lg group"
+                  variants={courseCardVariants}
+                  whileHover="hover"
                 >
                   <div className="h-3 bg-orange-500"></div>
-                  <div className="p-6">
-                    <div className="flex justify-between items-start mb-4">
-                      <div className="p-3 bg-orange-100 rounded-lg text-orange-500">
+                  <div className="p-5">
+                    <div className="flex justify-between items-start mb-3">
+                      <motion.div 
+                        className="p-3 bg-orange-100 rounded-lg text-orange-500"
+                        variants={courseIconVariants}
+                      >
                         {course.icon}
-                      </div>
+                      </motion.div>
                       <span className="bg-orange-100 text-orange-700 text-xs font-semibold px-3 py-1 rounded-full">
                         {course.level}
                       </span>
@@ -314,7 +374,7 @@ const TrainingPage = () => {
                     <h4 className="text-xl font-semibold mb-3 group-hover:text-orange-500 transition-colors">
                       {course.title}
                     </h4>
-                    <p className="text-gray-600 mb-6">{course.description}</p>
+                    <p className="text-gray-600 mb-4">{course.description}</p>
                     <div className="flex justify-between items-center">
                       <span className="flex items-center text-sm text-gray-500">
                         <Clock size={16} className="mr-1" />
@@ -330,34 +390,41 @@ const TrainingPage = () => {
                   </div>
                 </motion.div>
               ))}
-            </div>
+            </motion.div>
           </div>
 
           {/* All Courses */}
           <div>
-            <h3 className="text-2xl font-bold mb-8">All Courses</h3>
+            <h3 className="text-2xl font-bold mb-6">All Courses</h3>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {courses.map((course, index) => (
+            <motion.div 
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+              variants={coursesContainerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: '-100px' }}
+            >
+              {courses.map((course) => (
                 <motion.div
                   key={course.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 border-t-4 border-orange-500"
+                  className="bg-white p-5 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 border-t-4 border-orange-500 group"
+                  variants={courseCardVariants}
+                  whileHover="hover"
                 >
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="text-orange-500">
+                  <div className="flex items-center justify-between mb-3">
+                    <motion.div 
+                      className="text-orange-500"
+                      variants={courseIconVariants}
+                    >
                       {course.icon}
-                    </div>
+                    </motion.div>
                     <span className="text-sm text-gray-500 flex items-center">
                       <Clock size={16} className="mr-1" />
                       {course.duration}
                     </span>
                   </div>
                   <h4 className="text-xl font-semibold mb-2">{course.title}</h4>
-                  <p className="text-gray-600 mb-4">{course.description}</p>
+                  <p className="text-gray-600 mb-3">{course.description}</p>
                   <div className="flex justify-between items-center">
                     <span className="bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded">
                       {course.level}
@@ -371,15 +438,15 @@ const TrainingPage = () => {
                   </div>
                 </motion.div>
               ))}
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
       {/* Our Trainers Section - MOVED AFTER COURSES */}
-      <section className="py-12 bg-gray-50">
+      <section className="py-16 bg-gray-50">
         <div className="container-custom">
-            <div className="text-center mb-8">
+            <div className="text-center mb-12">
               <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -455,9 +522,9 @@ const TrainingPage = () => {
       </section>
 
       {/* Introduction */}
-      <section className="py-12">
+      <section className="py-20">
         <div className="container-custom">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center mb-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -473,14 +540,14 @@ const TrainingPage = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
             >
-              <h2 className="text-3xl font-bold mb-4">Nurturing Future Leaders</h2>
-              <p className="text-gray-600 mb-6">
+              <h2 className="text-3xl font-bold mb-6">Nurturing Future Leaders</h2>
+              <p className="text-gray-600 mb-6 text-justify">
                 At Aquilae, we don't just offer services; we invest in the future. Explore a world of growth with our Training and Development programs, extending beyond corporate boundaries. Our commitment goes beyond business – we're dedicated to nurturing young minds through our partnership with Unmaze.
               </p>
-              <p className="text-gray-600 mb-6">
+              <p className="text-gray-600 mb-6 text-justify">
                 Our curriculum, featuring GST, the 3C program, stock market trading, financial communication, authenticity in leadership, and a commerce lab, is designed to mold well-rounded individuals. We offer bifold training focusing on employability and entrepreneurship, preparing graduates for both corporate and entrepreneurial journeys.
               </p>
-              <p className="text-gray-600">
+              <p className="text-gray-600 text-justify">
                 "Breaking the complex into simple and presenting the ordinary, extraordinary" defines us. We specialize in simplifying complex topics, making them accessible to students from all disciplines. Our seminars and workshops bridge the gap between formal education and practical corporate demands.
               </p>
             </motion.div>
@@ -493,20 +560,21 @@ const TrainingPage = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="text-3xl font-bold mb-8 text-center"
+              className="text-3xl font-bold mb-12 text-center"
             >
               Our Program Types
             </motion.h2>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {programTypes.map((program, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="bg-white p-6 rounded-lg shadow-lg text-center"
+                  whileHover={{ scale: 1.02, y: -2 }}
+                  transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
+                  className="bg-white p-6 rounded-lg shadow-lg cursor-pointer text-center"
                 >
                   <div className="text-orange-500 mb-4 flex justify-center">
                     {program.icon}
@@ -520,40 +588,10 @@ const TrainingPage = () => {
         </div>
       </section>
 
-      {/* Partnerships Section */}
-      <section className="py-12 bg-gray-50">
-        <div className="container-custom">
-          <div className="text-center mb-10">
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="section-title"
-            >
-              Our Academic Partnerships
-            </motion.h2>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="text-gray-600 max-w-2xl mx-auto"
-            >
-              We collaborate with leading educational institutions to bridge the gap between academia and industry
-            </motion.p>
-          </div>
-
-          <div className="mb-16">
-            <MOUSlider />
-          </div>
-        </div>
-      </section>
-
       {/* Student Feedback Section */}
       <section className="py-12 bg-black text-white">
         <div className="container-custom">
-          <div className="text-center mb-16">
+          <div className="text-center mb-10">
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -581,7 +619,7 @@ const TrainingPage = () => {
             </motion.p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {studentFeedback.map((feedback, index) => (
               <motion.div
                 key={feedback.id}
@@ -589,17 +627,17 @@ const TrainingPage = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white p-8 rounded-lg relative text-gray-800"
+                className="bg-white p-5 rounded-lg relative text-gray-800"
               >
-                <div className="text-orange-500 mb-6">
-                  <Quote size={40} />
+                <div className="text-orange-500 mb-4">
+                  <Quote size={28} />
                 </div>
-                <p className="italic text-gray-700 mb-6 text-lg leading-relaxed">
+                <p className="italic text-gray-700 mb-4 text-base leading-relaxed">
                   "{feedback.text}"
                 </p>
                 <div className="border-t border-gray-200 pt-4">
-                  <h4 className="font-semibold text-gray-900 text-lg">{feedback.author}</h4>
-                  <p className="text-sm text-orange-500">{feedback.institution}</p>
+                  <h4 className="font-semibold text-gray-900 text-base">{feedback.author}</h4>
+                  <p className="text-xs text-orange-500">{feedback.institution}</p>
                 </div>
               </motion.div>
             ))}
@@ -607,8 +645,38 @@ const TrainingPage = () => {
         </div>
       </section>
 
+      {/* Partnerships Section */}
+      <section className="py-12 bg-gray-50">
+        <div className="container-custom">
+          <div className="text-center mb-12">
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="section-title"
+            >
+              Our Academic Partnerships
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="text-gray-600 max-w-2xl mx-auto"
+            >
+              We collaborate with leading educational institutions to bridge the gap between academia and industry
+            </motion.p>
+          </div>
+
+          <div className="mb-12">
+            <MOUSlider />
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
-      <section className="py-20 bg-orange-500 text-white">
+      <section className="py-6 bg-orange-600 text-white">
         <div className="container-custom">
           <div className="text-center">
             <motion.h2
@@ -616,7 +684,7 @@ const TrainingPage = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="text-3xl md:text-4xl font-bold mb-4"
+              className="text-2xl md:text-3xl font-bold mb-3"
             >
               Ready to Enhance Your Skills?
             </motion.h2>
@@ -625,7 +693,7 @@ const TrainingPage = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="text-xl mb-8 max-w-2xl mx-auto"
+              className="text-lg mb-4 max-w-2xl mx-auto"
             >
               Browse our course catalog or contact us to discuss custom training solutions.
             </motion.p>
@@ -638,7 +706,7 @@ const TrainingPage = () => {
             >
               <button 
                 onClick={downloadCatalog}
-                className="btn bg-white text-orange-500 hover:bg-gray-100"
+                className="btn bg-transparent border-2 border-white hover:bg-white hover:text-orange-500"
               >
                 Download Course Catalog
               </button>

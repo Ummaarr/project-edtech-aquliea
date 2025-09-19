@@ -20,7 +20,7 @@ function App() {
   }, []);
 
   return (
-    <div className="font-sans bg-orange-50">
+    <div className="font-sans app-background">
       <Header />
       <ScrollToTop />
       <Routes>

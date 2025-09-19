@@ -97,9 +97,9 @@ const TeamPage = () => {
       </section>
 
       {/* Our Culture */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-12 bg-gray-50">
         <div className="container-custom">
-          <div className="text-center mb-16">
+          <div className="text-center mb-10">
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -120,7 +120,7 @@ const TeamPage = () => {
             </motion.p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -140,30 +140,30 @@ const TeamPage = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
             >
-              <div className="space-y-6">
-                <div className="bg-white p-6 rounded-lg shadow-md">
-                  <h3 className="text-xl font-semibold mb-3 text-orange-500">Excellence</h3>
+              <div className="space-y-4">
+                <div className="bg-white p-5 rounded-lg shadow-md">
+                  <h3 className="text-xl font-semibold mb-2 text-orange-500">Excellence</h3>
                   <p className="text-gray-600">
                     We are committed to delivering exceptional results and maintaining the highest standards in everything we do.
                   </p>
                 </div>
                 
-                <div className="bg-white p-6 rounded-lg shadow-md">
-                  <h3 className="text-xl font-semibold mb-3 text-orange-500">Integrity</h3>
+                <div className="bg-white p-5 rounded-lg shadow-md">
+                  <h3 className="text-xl font-semibold mb-2 text-orange-500">Integrity</h3>
                   <p className="text-gray-600">
                     We operate with honesty, transparency, and ethical principles in all our business dealings.
                   </p>
                 </div>
                 
-                <div className="bg-white p-6 rounded-lg shadow-md">
-                  <h3 className="text-xl font-semibold mb-3 text-orange-500">Innovation</h3>
+                <div className="bg-white p-5 rounded-lg shadow-md">
+                  <h3 className="text-xl font-semibold mb-2 text-orange-500">Innovation</h3>
                   <p className="text-gray-600">
                     We continuously seek creative solutions and embrace new technologies to drive business transformation.
                   </p>
                 </div>
                 
-                <div className="bg-white p-6 rounded-lg shadow-md">
-                  <h3 className="text-xl font-semibold mb-3 text-orange-500">Client Focus</h3>
+                <div className="bg-white p-5 rounded-lg shadow-md">
+                  <h3 className="text-xl font-semibold mb-2 text-orange-500">Client Focus</h3>
                   <p className="text-gray-600">
                     We prioritize understanding our clients' needs and delivering solutions that exceed their expectations.
                   </p>
@@ -175,7 +175,7 @@ const TeamPage = () => {
       </section>
 
       {/* Join Our Team */}
-      <section className="py-20 bg-orange-500 text-white">
+      <section className="py-6 bg-orange-600 text-white">
         <div className="container-custom">
           <div className="text-center">
             <motion.h2
@@ -183,7 +183,7 @@ const TeamPage = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="text-3xl md:text-4xl font-bold mb-6"
+              className="text-2xl md:text-3xl font-bold mb-3"
             >
               Join Our Team
             </motion.h2>
@@ -192,7 +192,7 @@ const TeamPage = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="text-xl mb-8 max-w-2xl mx-auto"
+              className="text-lg mb-4 max-w-2xl mx-auto"
             >
               We're always looking for talented individuals to join our growing team. Check out our current openings or send us your resume.
             </motion.p>
@@ -204,7 +204,7 @@ const TeamPage = () => {
               className="flex flex-wrap gap-4 justify-center"
             >
           
-              <Link to="/contact?section=resume" className="btn bg-transparent border-2 border-white hover:bg-white hover:text-orange-500">
+              <Link to="/resume-submission" className="btn bg-transparent border-2 border-white hover:bg-white hover:text-orange-500">
                 Submit Your Resume
               </Link>
             </motion.div>

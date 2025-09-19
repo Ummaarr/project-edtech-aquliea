@@ -260,8 +260,21 @@ const CourseDetailPage = () => {
 
   return (
     <div>
+      {/* WhatsApp floating button */}
+      <button
+        onClick={() => window.open('https://wa.me/917338879700', '_blank')}
+        className="fixed bottom-6 right-6 z-50 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition-colors"
+        aria-label="Contact on WhatsApp"
+      >
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+          alt="WhatsApp"
+          width={24}
+          height={24}
+        />
+      </button>
       {/* Hero Section */}
-      <section className="relative pt-20 pb-8 bg-black text-white">
+      <section className="relative pt-20 pb-2 bg-black text-white">
         <div className="absolute inset-0 z-[-1] opacity-20">
           <img 
             src={course.image} 
@@ -454,7 +467,7 @@ const CourseDetailPage = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-6 bg-orange-500 text-white">
+      <section className="py-6 bg-orange-600 text-white">
         <div className="container-custom">
           <div className="text-center">
             <motion.h2

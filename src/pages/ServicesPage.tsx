@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Users, Server, LineChart, BookOpenCheck, Briefcase, Building2, Calculator } from 'lucide-react';
 import ServiceCard from '../components/ServiceCard';
+import ClientsSlider from '../components/ClientsSlider';
 
 // Define service data
 const services = [
@@ -113,6 +114,36 @@ const ServicesPage = () => {
                 index={index}
               />
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Our Clients Section */}
+      <section className="py-12 bg-gray-50">
+        <div className="container-custom">
+          <div className="text-center mb-12">
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="section-title"
+            >
+              Our Clients
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="text-gray-600 max-w-2xl mx-auto"
+            >
+              Trusted by leading companies across various industries
+            </motion.p>
+          </div>
+
+          <div className="mb-12">
+            <ClientsSlider />
           </div>
         </div>
       </section>

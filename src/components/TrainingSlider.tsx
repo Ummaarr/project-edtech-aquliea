@@ -8,7 +8,7 @@ const trainingImages = [
   "./images/WhatsApp-Image-2023-06-27-at-17.18.27-(2).jpeg",
   "./images/WhatsApp-Image-2023-06-27-at-17.18.39.jpeg", 
   "./images/WhatsApp-Image-2023-06-27-at-17.29.01.jpeg",
-  "./images/WhatsApp-Image-2022-03-12-at-13.34.05.jpeg"
+  "./images/WhatsApp-Image-2022-03-12-at-3.34.05.jpeg"
 ];
 
 const TrainingSlider = () => {

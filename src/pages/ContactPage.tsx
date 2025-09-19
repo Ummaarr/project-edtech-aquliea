@@ -1,9 +1,6 @@
-import { useLocation } from 'react-router-dom';
-import { useRef } from 'react';
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin } from 'lucide-react';
-import { Link } from 'react-router-dom';
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
@@ -29,17 +26,6 @@ const ContactPage = () => {
       message: ''
     });
   };
-  const location = useLocation();
-const resumeRef = useRef<HTMLDivElement>(null);
-
-useEffect(() => {
-  const params = new URLSearchParams(location.search);
-  const section = params.get('section');
-
-  if (section === 'resume' && resumeRef.current) {
-    resumeRef.current.scrollIntoView({ behavior: 'smooth' });
-  }
-}, [location]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -88,7 +74,6 @@ useEffect(() => {
         <div className="container-custom">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
             <motion.div
-              ref={resumeRef}
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
@@ -167,17 +152,10 @@ useEffect(() => {
                 <div className="flex flex-col sm:flex-row gap-4">
                   <button
                     type="submit"
-                    className="flex-1 bg-orange-500 text-white py-3 px-6 rounded-lg font-medium hover:bg-orange-600 transition-colors duration-300"
+                    className="w-full bg-orange-600 text-white py-3 px-6 rounded-lg font-medium hover:bg-orange-700 transition-colors duration-300"
                   >
                     Send Message
                   </button>
-                  
-                  <Link
-                    to="/resume-submission"
-                    className="flex-1 bg-transparent border-2 border-orange-500 text-orange-500 py-3 px-6 rounded-lg font-medium hover:bg-orange-500 hover:text-white transition-colors duration-300 text-center"
-                  >
-                    Submit Your Resume
-                  </Link>
                 </div>
               </form>
             </motion.div>
@@ -189,20 +167,35 @@ useEffect(() => {
             >
               <h2 className="text-3xl font-bold mb-6">Contact Information</h2>
               <div className="space-y-6">
-                <div className="flex items-start">
-                  <MapPin size={24} className="text-orange-500 mr-4 mt-1 flex-shrink-0" />
-                  <div>
-                    <h3 className="font-semibold text-gray-800 mb-1">Address</h3>
-                    <p className="text-gray-600">
-                      14, Chakrapani Street, West Mambalam, Chennai – 600 033, India
-                    </p>
+                <div>
+                  <h3 className="text-lg font-semibold mb-2">Address</h3>
+                  <div className="space-y-6">
+                    <div className="flex items-start">
+                      <MapPin size={24} className="text-orange-500 mr-4 mt-1 flex-shrink-0" />
+                      <div>
+                        <h3 className="text-sm font-semibold text-gray-800 mb-1">Registered Office</h3>
+                        <p className="text-lg text-gray-700">
+                          14, Chakrapani Street, West Mambalam, Chennai – 600 033, India
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start">
+                      <MapPin size={24} className="text-orange-500 mr-4 mt-1 flex-shrink-0" />
+                      <div>
+                        <h3 className="text-sm font-semibold text-gray-800 mb-1">Training Center</h3>
+                        <p className="text-lg text-gray-700">
+                          No: 26, Kanika Colony 3rd St, Lakshmi Nagar IV Stage, Voltas Colony, Nanganallur, Chennai, Tamil Nadu 600061
+                        </p>
+                      </div>
+                    </div>
                   </div>
                 </div>
                 
                 <div className="flex items-center">
                   <Phone size={24} className="text-orange-500 mr-4 flex-shrink-0" />
                   <div>
-                    <h3 className="font-semibold text-gray-800 mb-1">Phone</h3>
+                    <h3 className="text-sm font-semibold text-gray-800 mb-1">Phone</h3>
                     <a 
                       href="https://wa.me/917338879700" 
                       target="_blank" 
@@ -217,7 +210,7 @@ useEffect(() => {
                 <div className="flex items-center">
                   <Mail size={24} className="text-orange-500 mr-4 flex-shrink-0" />
                   <div>
-                    <h3 className="font-semibold text-gray-800 mb-1">Email</h3>
+                    <h3 className="text-sm font-semibold text-gray-800 mb-1">Email</h3>
                     <a 
                       href="mailto:contact@aquilaetech.de?subject=Business Inquiry&body=Hello, I would like to discuss..."
                       className="text-orange-500 hover:text-orange-600 transition-colors duration-300"
@@ -226,6 +219,19 @@ useEffect(() => {
                     </a>
                   </div>
                 </div>
+              </div>
+              
+              {/* Map Section */}
+              <div className="bg-white rounded-lg shadow-lg overflow-hidden h-96 mt-8">
+                <iframe 
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.2979794483654!2d80.22509827468593!3d13.044257662113005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5266f997447c37%3A0x235a16f5b6a2c79c!2s14%2C%20Chakrapani%20St%2C%20Ramakrishnapuram%2C%20West%20Mambalam%2C%20Chennai%2C%20Tamil%20Nadu%20600033%2C%20India!5e0!3m2!1sen!2sus!4v1695884162907!5m2!1sen!2sus" 
+                  width="100%" 
+                  height="100%" 
+                  style={{ border: 0 }} 
+                  allowFullScreen 
+                  loading="lazy" 
+                  referrerPolicy="no-referrer-when-downgrade"
+                ></iframe>
               </div>
             </motion.div>
           </div>

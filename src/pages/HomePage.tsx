@@ -663,7 +663,7 @@ const HomePage = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-6 bg-orange-500 text-white">
+      <section className="py-6 bg-orange-600 text-white">
         <div className="container-custom">
           <div className="text-center">
             <motion.h2
