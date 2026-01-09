@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { BookOpen, Clock, Award, GraduationCap, TrendingUp, CreditCard, BarChart, MessageSquare, Target, Check, MessageCircle, Quote, Users } from 'lucide-react';
+import { BookOpen, Clock, Award, GraduationCap, TrendingUp, CreditCard, BarChart, MessageSquare, Target, Check, Quote } from 'lucide-react';
 import MOUSlider from '../components/MOUSlider';
 import TrainingSlider from '../components/TrainingSlider';
 
@@ -352,43 +352,41 @@ const TrainingPage = () => {
               viewport={{ once: true, margin: '-100px' }}
             >
               {courses.filter(course => course.featured).map((course) => (
-                <motion.div
-                  key={course.id}
-                  className="bg-white rounded-lg overflow-hidden shadow-lg group"
-                  variants={courseCardVariants}
-                  whileHover="hover"
-                >
-                  <div className="h-3 bg-orange-500"></div>
-                  <div className="p-5">
-                    <div className="flex justify-between items-start mb-3">
-                      <motion.div 
-                        className="p-3 bg-orange-100 rounded-lg text-orange-500"
-                        variants={courseIconVariants}
-                      >
-                        {course.icon}
-                      </motion.div>
-                      <span className="bg-orange-100 text-orange-700 text-xs font-semibold px-3 py-1 rounded-full">
-                        {course.level}
-                      </span>
+                <Link key={course.id} to={`/course/${course.id}`}>
+                  <motion.div
+                    className="bg-white rounded-lg overflow-hidden shadow-lg group cursor-pointer"
+                    variants={courseCardVariants}
+                    whileHover="hover"
+                  >
+                    <div className="h-3 bg-orange-500"></div>
+                    <div className="p-5">
+                      <div className="flex justify-between items-start mb-3">
+                        <motion.div 
+                          className="p-3 bg-orange-100 rounded-lg text-orange-500"
+                          variants={courseIconVariants}
+                        >
+                          {course.icon}
+                        </motion.div>
+                        <span className="bg-orange-100 text-orange-700 text-xs font-semibold px-3 py-1 rounded-full">
+                          {course.level}
+                        </span>
+                      </div>
+                      <h4 className="text-xl font-semibold mb-3 group-hover:text-orange-500 transition-colors">
+                        {course.title}
+                      </h4>
+                      <p className="text-gray-600 mb-4">{course.description}</p>
+                      <div className="flex justify-between items-center">
+                        <span className="flex items-center text-sm text-gray-500">
+                          <Clock size={16} className="mr-1" />
+                          {course.duration}
+                        </span>
+                        <span className="text-orange-500 hover:text-orange-600 font-medium text-sm">
+                          Learn More
+                        </span>
+                      </div>
                     </div>
-                    <h4 className="text-xl font-semibold mb-3 group-hover:text-orange-500 transition-colors">
-                      {course.title}
-                    </h4>
-                    <p className="text-gray-600 mb-4">{course.description}</p>
-                    <div className="flex justify-between items-center">
-                      <span className="flex items-center text-sm text-gray-500">
-                        <Clock size={16} className="mr-1" />
-                        {course.duration}
-                      </span>
-                      <Link 
-                        to={`/course/${course.id}`}
-                        className="text-orange-500 hover:text-orange-600 font-medium text-sm"
-                      >
-                        Learn More
-                      </Link>
-                    </div>
-                  </div>
-                </motion.div>
+                  </motion.div>
+                </Link>
               ))}
             </motion.div>
           </div>
@@ -405,38 +403,36 @@ const TrainingPage = () => {
               viewport={{ once: true, margin: '-100px' }}
             >
               {courses.map((course) => (
-                <motion.div
-                  key={course.id}
-                  className="bg-white p-5 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 border-t-4 border-orange-500 group"
-                  variants={courseCardVariants}
-                  whileHover="hover"
-                >
-                  <div className="flex items-center justify-between mb-3">
-                    <motion.div 
-                      className="text-orange-500"
-                      variants={courseIconVariants}
-                    >
-                      {course.icon}
-                    </motion.div>
-                    <span className="text-sm text-gray-500 flex items-center">
-                      <Clock size={16} className="mr-1" />
-                      {course.duration}
-                    </span>
-                  </div>
-                  <h4 className="text-xl font-semibold mb-2">{course.title}</h4>
-                  <p className="text-gray-600 mb-3">{course.description}</p>
-                  <div className="flex justify-between items-center">
-                    <span className="bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded">
-                      {course.level}
-                    </span>
-                    <Link 
-                      to={`/course/${course.id}`}
-                      className="text-orange-500 hover:text-orange-600 font-medium"
-                    >
-                      Learn More
-                    </Link>
-                  </div>
-                </motion.div>
+                <Link key={course.id} to={`/course/${course.id}`}>
+                  <motion.div
+                    className="bg-white p-5 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 border-t-4 border-orange-500 group cursor-pointer"
+                    variants={courseCardVariants}
+                    whileHover="hover"
+                  >
+                    <div className="flex items-center justify-between mb-3">
+                      <motion.div 
+                        className="text-orange-500"
+                        variants={courseIconVariants}
+                      >
+                        {course.icon}
+                      </motion.div>
+                      <span className="text-sm text-gray-500 flex items-center">
+                        <Clock size={16} className="mr-1" />
+                        {course.duration}
+                      </span>
+                    </div>
+                    <h4 className="text-xl font-semibold mb-2">{course.title}</h4>
+                    <p className="text-gray-600 mb-3">{course.description}</p>
+                    <div className="flex justify-between items-center">
+                      <span className="bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded">
+                        {course.level}
+                      </span>
+                      <span className="text-orange-500 hover:text-orange-600 font-medium">
+                        Learn More
+                      </span>
+                    </div>
+                  </motion.div>
+                </Link>
               ))}
             </motion.div>
           </div>
@@ -555,33 +551,22 @@ const TrainingPage = () => {
 
           {/* Program Types */}
           <div>
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="text-3xl font-bold mb-12 text-center"
-            >
+            <h2 className="text-3xl font-bold mb-12 text-center">
               Our Program Types
-            </motion.h2>
+            </h2>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {programTypes.map((program, index) => (
-                <motion.div
+                <div
                   key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  whileHover={{ scale: 1.02, y: -2 }}
-                  transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
-                  className="bg-white p-6 rounded-lg shadow-lg cursor-pointer text-center"
+                  className="bg-white p-6 rounded-lg shadow-lg text-center"
                 >
                   <div className="text-orange-500 mb-4 flex justify-center">
                     {program.icon}
                   </div>
                   <h3 className="text-xl font-semibold mb-3">{program.title}</h3>
                   <p className="text-gray-600">{program.description}</p>
-                </motion.div>
+                </div>
               ))}
             </div>
           </div>
@@ -589,15 +574,15 @@ const TrainingPage = () => {
       </section>
 
       {/* Student Feedback Section */}
-      <section className="py-12 bg-black text-white">
+      <section className="py-2 bg-cyan-900 text-white">
         <div className="container-custom">
-          <div className="text-center mb-10">
+          <div className="text-center mb-3">
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="text-3xl md:text-4xl font-bold mb-4 text-orange-500"
+              className="text-2xl md:text-3xl font-bold mb-3 text-orange-500"
             >
               Student Feedback
             </motion.h2>
@@ -606,20 +591,20 @@ const TrainingPage = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="h-1 w-24 bg-orange-500 mx-auto mb-6"
+              className="h-1 w-16 bg-orange-500 mx-auto mb-4"
             ></motion.div>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.4 }}
-              className="text-gray-300 max-w-2xl mx-auto"
+              className="text-gray-300 max-w-xl mx-auto text-sm"
             >
               Hear what our students have to say about their learning experience with us
             </motion.p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             {studentFeedback.map((feedback, index) => (
               <motion.div
                 key={feedback.id}
@@ -627,16 +612,16 @@ const TrainingPage = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white p-5 rounded-lg relative text-gray-800"
+                className="bg-white p-3 rounded-lg relative text-gray-800"
               >
-                <div className="text-orange-500 mb-4">
-                  <Quote size={28} />
+                <div className="text-orange-500 mb-2">
+                  <Quote size={16} />
                 </div>
-                <p className="italic text-gray-700 mb-4 text-base leading-relaxed">
+                <p className="italic text-gray-700 mb-2 text-xs leading-relaxed text-justify">
                   "{feedback.text}"
                 </p>
-                <div className="border-t border-gray-200 pt-4">
-                  <h4 className="font-semibold text-gray-900 text-base">{feedback.author}</h4>
+                <div className="border-t border-gray-200 pt-2">
+                  <h4 className="font-semibold text-gray-900 text-xs">{feedback.author}</h4>
                   <p className="text-xs text-orange-500">{feedback.institution}</p>
                 </div>
               </motion.div>

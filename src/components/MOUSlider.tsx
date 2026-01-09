@@ -21,6 +21,7 @@ const MOUSlider = () => {
       spaceBetween={20}
       slidesPerView={1}
       centeredSlides={true}
+      loop={true}
       navigation={true}
       pagination={{
         clickable: true,

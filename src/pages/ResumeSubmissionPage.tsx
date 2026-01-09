@@ -51,7 +51,15 @@ const ResumeSubmissionPage = () => {
   };
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    // Scroll to top when component mounts
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    
+    // Also ensure it scrolls to top after a short delay
+    const timer = setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, 100);
+    
+    return () => clearTimeout(timer);
   }, []);
 
   return (
@@ -67,9 +75,9 @@ const ResumeSubmissionPage = () => {
         </div>
         
         <div className="container-custom">
-          <Link to="/contact" className="inline-flex items-center text-white hover:text-orange-300 mb-8">
+          <Link to="/team" className="inline-flex items-center text-white hover:text-orange-300 mb-8">
             <ArrowLeft size={20} className="mr-2" />
-            Back to Contact
+            Back to Our Team
           </Link>
           
           <motion.h1

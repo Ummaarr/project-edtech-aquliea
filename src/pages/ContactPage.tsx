@@ -80,7 +80,7 @@ const ContactPage = () => {
             >
               <h2 className="text-3xl font-bold mb-6">Get In Touch</h2>
               <p className="text-gray-600 mb-8">
-                Fill out the form below and one of our team members will get back to you as soon as possible.
+              Please fill out the form below, and our team will be happy to get in touch with you as soon as possible.
               </p>
               
               <form onSubmit={handleSubmit} className="space-y-6">
@@ -221,17 +221,42 @@ const ContactPage = () => {
                 </div>
               </div>
               
-              {/* Map Section */}
-              <div className="bg-white rounded-lg shadow-lg overflow-hidden h-96 mt-8">
-                <iframe 
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.2979794483654!2d80.22509827468593!3d13.044257662113005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5266f997447c37%3A0x235a16f5b6a2c79c!2s14%2C%20Chakrapani%20St%2C%20Ramakrishnapuram%2C%20West%20Mambalam%2C%20Chennai%2C%20Tamil%20Nadu%20600033%2C%20India!5e0!3m2!1sen!2sus!4v1695884162907!5m2!1sen!2sus" 
-                  width="100%" 
-                  height="100%" 
-                  style={{ border: 0 }} 
-                  allowFullScreen 
-                  loading="lazy" 
-                  referrerPolicy="no-referrer-when-downgrade"
-                ></iframe>
+              {/* Maps Section */}
+              <div className="mt-8">
+                <h3 className="text-xl font-semibold mb-4">Our Locations</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {/* Registered Office Map */}
+                  <div>
+                    <h4 className="text-lg font-medium mb-2 text-gray-800">Registered Office</h4>
+                    <div className="bg-white rounded-lg shadow-lg overflow-hidden h-80">
+                      <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.2979794483654!2d80.22509827468593!3d13.044257662113005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5266f997447c37%3A0x235a16f5b6a2c79c!2s14%2C%20Chakrapani%20St%2C%20Ramakrishnapuram%2C%20West%20Mambalam%2C%20Chennai%2C%20Tamil%20Nadu%20600033%2C%20India!5e0!3m2!1sen!2sus!4v1695884162907!5m2!1sen!2sus" 
+                        width="100%" 
+                        height="100%" 
+                        style={{ border: 0 }} 
+                        allowFullScreen 
+                        loading="lazy" 
+                        referrerPolicy="no-referrer-when-downgrade"
+                      ></iframe>
+                    </div>
+                  </div>
+
+                  {/* Training Center Map */}
+                  <div>
+                    <h4 className="text-lg font-medium mb-2 text-gray-800">Training Center</h4>
+                    <div className="bg-white rounded-lg shadow-lg overflow-hidden h-80">
+                      <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.1234567890123!2d80.1890747!3d12.9748031!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a525de2eb7f6123%3A0x3009525a6823d086!2s26%2C%20Kanika%20Colony%203rd%20St%2C%20Lakshmi%20Nagar%20IV%20Stage%2C%20Voltas%20Colony%2C%20Nanganallur%2C%20Chennai%2C%20Tamil%20Nadu%20600061%2C%20India!5e0!3m2!1sen!2sus!4v1695884162907!5m2!1sen!2sus" 
+                        width="100%" 
+                        height="100%" 
+                        style={{ border: 0 }} 
+                        allowFullScreen 
+                        loading="lazy" 
+                        referrerPolicy="no-referrer-when-downgrade"
+                      ></iframe>
+                    </div>
+                  </div>
+                </div>
               </div>
             </motion.div>
           </div>

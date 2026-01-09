@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Users, Server, LineChart, BookOpenCheck, Briefcase, Building2, Calculator } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import ServiceCard from '../components/ServiceCard';
 import ClientsSlider from '../components/ClientsSlider';
 
@@ -173,20 +174,7 @@ const ServicesPage = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              whileHover={{ 
-                scale: 1.02, 
-                y: -2
-              }}
-              transition={{ 
-                duration: 0.3,
-                ease: [0.4, 0, 0.2, 1]
-              }}
-              className="bg-white p-6 rounded-lg shadow-lg cursor-pointer"
-            >
+            <div className="bg-white p-6 rounded-lg shadow-lg">
               <div className="text-orange-500 mb-4">
                 <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-orange-100">
                   <span className="text-2xl font-bold">1</span>
@@ -196,22 +184,9 @@ const ServicesPage = () => {
               <p className="text-gray-600">
                 Highly qualified professionals with wide experience across multiple business verticals.
               </p>
-            </motion.div>
+            </div>
             
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              whileHover={{ 
-                scale: 1.02, 
-                y: -2
-              }}
-              transition={{ 
-                duration: 0.3,
-                ease: [0.4, 0, 0.2, 1]
-              }}
-              className="bg-white p-6 rounded-lg shadow-lg cursor-pointer"
-            >
+            <div className="bg-white p-6 rounded-lg shadow-lg">
               <div className="text-orange-500 mb-4">
                 <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-orange-100">
                   <span className="text-2xl font-bold">2</span>
@@ -221,22 +196,9 @@ const ServicesPage = () => {
               <p className="text-gray-600">
                 International presence allows us to serve clients across different markets and time zones.
               </p>
-            </motion.div>
+            </div>
             
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              whileHover={{ 
-                scale: 1.02, 
-                y: -2
-              }}
-              transition={{ 
-                duration: 0.3,
-                ease: [0.4, 0, 0.2, 1]
-              }}
-              className="bg-white p-6 rounded-lg shadow-lg cursor-pointer"
-            >
+            <div className="bg-white p-6 rounded-lg shadow-lg">
               <div className="text-orange-500 mb-4">
                 <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-orange-100">
                   <span className="text-2xl font-bold">3</span>
@@ -246,22 +208,9 @@ const ServicesPage = () => {
               <p className="text-gray-600">
                 Providing value through cost-effective solutions without compromising on quality.
               </p>
-            </motion.div>
+            </div>
             
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              whileHover={{ 
-                scale: 1.02, 
-                y: -2
-              }}
-              transition={{ 
-                duration: 0.3,
-                ease: [0.4, 0, 0.2, 1]
-              }}
-              className="bg-white p-6 rounded-lg shadow-lg cursor-pointer"
-            >
+            <div className="bg-white p-6 rounded-lg shadow-lg">
               <div className="text-orange-500 mb-4">
                 <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-orange-100">
                   <span className="text-2xl font-bold">4</span>
@@ -271,6 +220,44 @@ const ServicesPage = () => {
               <p className="text-gray-600">
                 Focused on understanding and meeting your unique business requirements and goals.
               </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-6 bg-orange-600 text-white">
+        <div className="container-custom">
+          <div className="text-center">
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="text-2xl md:text-3xl font-bold mb-3"
+            >
+              Ready to Collaborate With Us?
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="text-lg mb-4 max-w-2xl mx-auto"
+            >
+              Explore our services or get in touch to discuss your business needs.
+            </motion.p>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              className="flex flex-wrap gap-4 justify-center"
+            >
+             
+              <Link to="/contact" className="btn bg-transparent border-2 border-white hover:bg-white hover:text-orange-500">
+                Contact Us
+              </Link>
             </motion.div>
           </div>
         </div>

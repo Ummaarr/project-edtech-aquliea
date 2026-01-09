@@ -207,7 +207,7 @@ const ServiceDetailPage = () => {
       </section>
 
       {/* Main Content */}
-      <section className="py-20">
+      <section className="pt-20 pb-8">
         <div className="container-custom">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             <div className="lg:col-span-2">
@@ -243,44 +243,41 @@ const ServiceDetailPage = () => {
                   ))}
                 </ul>
                 
-                <div className="mt-7">
-                  {/* Service Navigation */}
-                  <div className="flex items-center justify-between pt-4 border-t border-gray-200">
-                    {/* Previous Service - Only show if not the first service */}
-                    {id !== 'finance' && (
-                      <Link 
-                        to={`/services/${getPreviousService(id || 'finance')}`}
-                        className="flex items-center text-sm text-gray-600 hover:text-orange-500 transition-colors duration-300"
-                      >
-                        <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                        </svg>
-                        <span>Previous</span>
-                      </Link>
-                    )}
-
-                    {/* Spacer for first service to maintain layout */}
-                    {id === 'finance' && <div></div>}
-
-                    {/* Next Service - Only show if not the last service */}
-                    {id !== 'it' && (
-                      <Link 
-                        to={`/services/${getNextService(id || 'finance')}`}
-                        className="flex items-center text-sm text-gray-600 hover:text-orange-500 transition-colors duration-300"
-                      >
-                        <span>Next</span>
-                        <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                        </svg>
-                      </Link>
-                    )}
-
-                    {/* Spacer for last service to maintain layout */}
-                    {id === 'it' && <div></div>}
-                  </div>
-                </div>
               </motion.div>
             </div>
+          </div>
+          
+          {/* Service Navigation - Merged with main content */}
+          <div className="flex items-center justify-between mt-12 pt-8 border-t border-gray-200">
+            {/* Previous Service - Only show if not the first service */}
+            {id !== 'finance' ? (
+              <Link 
+                to={`/services/${getPreviousService(id || 'finance')}`}
+                className="flex items-center text-sm text-gray-600 hover:text-orange-500 transition-colors duration-300"
+              >
+                <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                </svg>
+                <span>Previous</span>
+              </Link>
+            ) : (
+              <div></div>
+            )}
+
+            {/* Next Service - Only show if not the last service */}
+            {id !== 'it' ? (
+              <Link 
+                to={`/services/${getNextService(id || 'finance')}`}
+                className="flex items-center text-sm text-gray-600 hover:text-orange-500 transition-colors duration-300"
+              >
+                <span>Next</span>
+                <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </Link>
+            ) : (
+              <div></div>
+            )}
           </div>
         </div>
       </section>

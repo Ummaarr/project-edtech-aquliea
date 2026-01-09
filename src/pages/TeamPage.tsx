@@ -140,7 +140,7 @@ const TeamPage = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
             >
-              <div className="space-y-4">
+              <div className="space-y-4 h-full flex flex-col justify-between">
                 <div className="bg-white p-5 rounded-lg shadow-md">
                   <h3 className="text-xl font-semibold mb-2 text-orange-500">Excellence</h3>
                   <p className="text-gray-600">
@@ -204,7 +204,15 @@ const TeamPage = () => {
               className="flex flex-wrap gap-4 justify-center"
             >
           
-              <Link to="/resume-submission" className="btn bg-transparent border-2 border-white hover:bg-white hover:text-orange-500">
+              <Link 
+                to="/resume-submission" 
+                onClick={() => {
+                  setTimeout(() => {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }, 100);
+                }}
+                className="btn bg-transparent border-2 border-white hover:bg-white hover:text-orange-500"
+              >
                 Submit Your Resume
               </Link>
             </motion.div>

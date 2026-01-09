@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
-import { CheckCircle, ArrowRight } from 'lucide-react';
+import { CheckCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const AboutPage = () => {
@@ -50,7 +50,7 @@ const AboutPage = () => {
       </section>
 
       {/* Main Content */}
-      <section className="py-20">
+      <section className="py-20 bg-gray-200">
         <div className="container-custom">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
             <motion.div
@@ -109,26 +109,11 @@ const AboutPage = () => {
           </div>
 
           {/* Values */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
+          <div>
             <h2 className="text-3xl font-bold mb-8 text-center">Our Values</h2>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <motion.div 
-                className="bg-white p-6 rounded-lg shadow-lg cursor-pointer"
-                whileHover={{ 
-                  scale: 1.02, 
-                  y: -2
-                }}
-                transition={{ 
-                  duration: 0.3,
-                  ease: [0.4, 0, 0.2, 1]
-                }}
-              >
+              <div className="bg-white p-6 rounded-lg shadow-lg">
                 <div className="text-orange-500 mb-4">
                   <CheckCircle size={40} />
                 </div>
@@ -136,19 +121,9 @@ const AboutPage = () => {
                 <p className="text-gray-600">
                   Striving for excellence in every project and service we provide.
                 </p>
-              </motion.div>
+              </div>
               
-              <motion.div 
-                className="bg-white p-6 rounded-lg shadow-lg cursor-pointer"
-                whileHover={{ 
-                  scale: 1.02, 
-                  y: -2
-                }}
-                transition={{ 
-                  duration: 0.3,
-                  ease: [0.4, 0, 0.2, 1]
-                }}
-              >
+              <div className="bg-white p-6 rounded-lg shadow-lg">
                 <div className="text-orange-500 mb-4">
                   <CheckCircle size={40} />
                 </div>
@@ -156,19 +131,9 @@ const AboutPage = () => {
                 <p className="text-gray-600">
                   Operating with honesty, transparency, and ethical standards.
                 </p>
-              </motion.div>
+              </div>
               
-              <motion.div 
-                className="bg-white p-6 rounded-lg shadow-lg cursor-pointer"
-                whileHover={{ 
-                  scale: 1.02, 
-                  y: -2
-                }}
-                transition={{ 
-                  duration: 0.3,
-                  ease: [0.4, 0, 0.2, 1]
-                }}
-              >
+              <div className="bg-white p-6 rounded-lg shadow-lg">
                 <div className="text-orange-500 mb-4">
                   <CheckCircle size={40} />
                 </div>
@@ -176,19 +141,9 @@ const AboutPage = () => {
                 <p className="text-gray-600">
                   Embracing innovative technologies and approaches to solve problems.
                 </p>
-              </motion.div>
+              </div>
               
-              <motion.div 
-                className="bg-white p-6 rounded-lg shadow-lg cursor-pointer"
-                whileHover={{ 
-                  scale: 1.02, 
-                  y: -2
-                }}
-                transition={{ 
-                  duration: 0.3,
-                  ease: [0.4, 0, 0.2, 1]
-                }}
-              >
+              <div className="bg-white p-6 rounded-lg shadow-lg">
                 <div className="text-orange-500 mb-4">
                   <CheckCircle size={40} />
                 </div>
@@ -196,9 +151,9 @@ const AboutPage = () => {
                 <p className="text-gray-600">
                   Placing our clients' needs at the center of everything we do.
                 </p>
-              </motion.div>
+              </div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
 

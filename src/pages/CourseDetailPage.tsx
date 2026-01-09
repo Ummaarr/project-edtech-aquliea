@@ -39,7 +39,7 @@ By the end of this course, you'll have the confidence and skills needed to navig
       'Weekly market updates',
       'Certificate of completion'
     ],
-    image: 'https://images.pexels.com/photos/6801648/pexels-photo-6801648.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+    image: './images/stock-trading.png'
   },
   'capital-market': {
     title: 'Capital Market',
@@ -75,7 +75,7 @@ Our expert faculty brings years of industry experience, providing insights that 
       'Networking opportunities',
       'Professional certification'
     ],
-    image: 'https://images.pexels.com/photos/6801874/pexels-photo-6801874.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+    image: './images/capital-market.png'
   },
   'financial-communications': {
     title: 'Financial Communications',
@@ -111,7 +111,7 @@ The course also addresses the psychological aspects of financial communication, 
       'Communication tools training',
       'Professional feedback'
     ],
-    image: 'https://images.pexels.com/photos/6801642/pexels-photo-6801642.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+    image: './images/financial-communications.png'
   },
   'investment-banking': {
     title: 'Investment Banking',
@@ -147,7 +147,7 @@ The course also covers the regulatory environment, ethical considerations, and c
       'Interview preparation',
       'Industry certification'
     ],
-    image: 'https://images.pexels.com/photos/6801647/pexels-photo-6801647.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+    image: './images/investment-banking.png'
   },
   'corporate-success': {
     title: 'Impetuous to Corporate Success',
@@ -183,7 +183,7 @@ The course also focuses on personal development, helping you identify your leade
       'Personal development plan',
       'Leadership certification'
     ],
-    image: 'https://images.pexels.com/photos/6801645/pexels-photo-6801645.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+    image: './images/corporate-success.png'
   },
   'gst': {
     title: 'GST (Goods and Services Tax)',
@@ -219,13 +219,33 @@ The course is regularly updated to reflect the latest changes in GST regulations
       'Expert consultation sessions',
       'Compliance certification'
     ],
-    image: 'https://images.pexels.com/photos/6801649/pexels-photo-6801649.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+    image: './images/gst-training.png'
   }
 };
 
 const CourseDetailPage = () => {
   const { id } = useParams<{ id: string }>();
   const [course, setCourse] = useState<any>(null);
+  
+  // Helper functions for navigation
+  // Order: stock-trading -> capital-market -> financial-communications -> investment-banking -> corporate-success -> gst -> (back to stock-trading)
+  const courseOrder = ['stock-trading', 'capital-market', 'financial-communications', 'investment-banking', 'corporate-success', 'gst'];
+  
+  const getPreviousCourse = (currentId: string) => {
+    const currentIndex = courseOrder.indexOf(currentId);
+    if (currentIndex === -1) return courseOrder[0];
+    // Wrap around: if at first course, go to last course
+    const previousIndex = currentIndex === 0 ? courseOrder.length - 1 : currentIndex - 1;
+    return courseOrder[previousIndex];
+  };
+
+  const getNextCourse = (currentId: string) => {
+    const currentIndex = courseOrder.indexOf(currentId);
+    if (currentIndex === -1) return courseOrder[0];
+    // Wrap around: if at last course, go to first course
+    const nextIndex = currentIndex === courseOrder.length - 1 ? 0 : currentIndex + 1;
+    return courseOrder[nextIndex];
+  };
   
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -340,11 +360,11 @@ const CourseDetailPage = () => {
       </section>
 
       {/* Main Content */}
-      <section className="py-20">
+      <section className="pt-20 pb-8">
         <div className="container-custom">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
             {/* Left Side - Course Description */}
-            <div className="lg:col-span-7">
+            <div className="lg:col-span-6">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -388,7 +408,7 @@ const CourseDetailPage = () => {
             </div>
             
             {/* Right Side - Action Buttons */}
-            <div className="lg:col-span-5">
+            <div className="lg:col-span-6">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -400,7 +420,7 @@ const CourseDetailPage = () => {
                   <img 
                     src={course.image} 
                     alt={course.title}
-                    className="w-full h-64 object-cover rounded-lg shadow-lg"
+                    className="w-full h-68 object-cover rounded-lg shadow-lg"
                   />
                 </div>
 
@@ -454,7 +474,12 @@ const CourseDetailPage = () => {
                   <div className="mt-6 p-4 bg-orange-50 rounded-lg">
                     <p className="text-sm text-gray-600 text-center">
                       Have questions? Contact us at{' '}
-                      <a href="tel:+917338879700" className="text-orange-600 font-semibold">
+                      <a 
+                        href="https://wa.me/917338879700" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="text-orange-600 font-semibold hover:text-orange-700 transition-colors"
+                      >
                         +91 73388 79700
                       </a>
                     </p>
@@ -462,6 +487,39 @@ const CourseDetailPage = () => {
                 </div>
               </motion.div>
             </div>
+          </div>
+          
+          {/* Course Navigation - Merged with main content */}
+          <div className="flex items-center justify-between mt-12 pt-8 border-t border-gray-200">
+            {/* Previous Course - Hide on first course (stock-trading) */}
+            {id !== 'stock-trading' ? (
+              <Link 
+                to={`/course/${getPreviousCourse(id || 'stock-trading')}`}
+                className="flex items-center text-sm text-gray-600 hover:text-orange-500 transition-colors duration-300"
+              >
+                <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                </svg>
+                <span>Previous</span>
+              </Link>
+            ) : (
+              <div></div>
+            )}
+
+            {/* Next Course - Hide on last course (gst) */}
+            {id !== 'gst' ? (
+              <Link 
+                to={`/course/${getNextCourse(id || 'stock-trading')}`}
+                className="flex items-center text-sm text-gray-600 hover:text-orange-500 transition-colors duration-300"
+              >
+                <span>Next</span>
+                <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </Link>
+            ) : (
+              <div></div>
+            )}
           </div>
         </div>
       </section>

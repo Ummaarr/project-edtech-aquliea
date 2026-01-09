@@ -57,7 +57,7 @@ const Header = () => {
     >
       <div className="container-custom h-full">
         <div className="flex items-center h-14">
-          <Link to="/" className="flex items-center mr-16">
+          <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="flex items-center mr-16">
             <img 
               src={`${import.meta.env.BASE_URL}./images/LOGO_-_AQUILAE-removebg-preview.png`}
               alt="Aquilae Technologies" 
@@ -196,6 +196,7 @@ const Header = () => {
           <div className="container-custom py-6 space-y-4">
             <Link 
               to="/" 
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
               className={`block py-2 text-sm uppercase tracking-wide font-medium ${
                 location.pathname === '/' ? 'text-orange-500' : 'text-black'
               }`}
@@ -204,6 +205,7 @@ const Header = () => {
             </Link>
             <Link 
               to="/about" 
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
               className={`block py-2 text-sm uppercase tracking-wide font-medium ${
                 location.pathname === '/about' ? 'text-orange-500' : 'text-black'
               }`}
@@ -241,6 +243,7 @@ const Header = () => {
 
             <Link 
               to="/team" 
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
               className={`block py-2 text-sm uppercase tracking-wide font-medium ${
                 location.pathname === '/team' ? 'text-orange-500' : 'text-black'
               }`}
@@ -249,6 +252,7 @@ const Header = () => {
             </Link>
             <Link 
               to="/contact" 
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
               className={`block py-2 text-sm uppercase tracking-wide font-medium ${
                 location.pathname === '/contact' ? 'text-orange-500' : 'text-black'
               }`}
