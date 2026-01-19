@@ -1,5 +1,6 @@
-import { useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { useEffect, useState } from 'react';
+import { motion, useInView } from 'framer-motion';
+import { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { BookOpen, Clock, Award, GraduationCap, TrendingUp, CreditCard, BarChart, MessageSquare, Target, Check, Quote } from 'lucide-react';
 import MOUSlider from '../components/MOUSlider';
@@ -60,10 +61,131 @@ const courseIconVariants = {
 
 // Training Statistics
 const stats = [
-  { value: '10000+', label: 'Students Trained' },
-  { value: '20+', label: 'Partner Colleges' },
-  { value: '50+', label: 'Corporate Partners' }
+  { value: '10000+', label: 'Students Trained', numericValue: 10000 },
+  { value: '20+', label: 'Partner Colleges', numericValue: 20 },
+  { value: '50+', label: 'Corporate Partners', numericValue: 50 }
 ];
+
+// Enhanced counting animation component with independent timing
+const AnimatedCounter = ({ value, suffix = '+', baseDuration = 1.5, incrementRate = 4000 }: { 
+  value: number; 
+  suffix?: string; 
+  baseDuration?: number;
+  incrementRate?: number;
+}) => {
+  const [displayValue, setDisplayValue] = useState(0);
+  const ref = useRef<HTMLSpanElement>(null);
+  const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const animationRef = useRef<number | null>(null);
+
+  // Calculate independent duration based on target value
+  // Uses a base duration plus time based on value, ensuring smooth increments
+  const calculateDuration = (targetValue: number): number => {
+    // For larger values, use increment rate; for smaller values, use minimum duration
+    const calculatedDuration = Math.max(
+      baseDuration,
+      targetValue / incrementRate
+    );
+    // Cap maximum duration for very large numbers to maintain reasonable timing
+    return Math.min(calculatedDuration, 3.5);
+  };
+
+  useEffect(() => {
+    if (!isInView) {
+      // Ensure it's 0 when not in view
+      setDisplayValue(0);
+      return;
+    }
+
+    // Each counter calculates its own duration independently
+    const duration = calculateDuration(value);
+    let startTime: number | null = null;
+    const lastDisplayedRef = { current: 0 };
+
+    // Enhanced easing function - easeOutExpo for smoother, more natural motion
+    const easeOutExpo = (t: number): number => {
+      return t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
+    };
+
+    // Smooth interpolation function with optimized updates
+    const animate = (currentTime: number) => {
+      if (!startTime) {
+        startTime = currentTime;
+        // Explicitly set to 0 at the very start
+        setDisplayValue(0);
+        lastDisplayedRef.current = 0;
+      }
+
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / (duration * 1000), 1);
+      
+      // Apply easing for smooth, natural motion
+      const easedProgress = easeOutExpo(progress);
+      
+      // Calculate current value with smooth interpolation
+      const currentValue = easedProgress * value;
+      
+      // Only update if the change is significant enough to be visible
+      // This reduces re-renders while maintaining smooth animation
+      // Threshold adapts based on value size
+      const threshold = value >= 1000 ? 1 : value >= 100 ? 0.5 : 0.1;
+      const roundedValue = progress >= 1 ? value : currentValue;
+      
+      // Always update on first frame (when progress is very small) to show 0, then use threshold
+      if (progress < 0.01 || Math.abs(roundedValue - lastDisplayedRef.current) >= threshold || progress >= 1) {
+        setDisplayValue(roundedValue);
+        lastDisplayedRef.current = roundedValue;
+      }
+
+      if (progress < 1) {
+        animationRef.current = requestAnimationFrame(animate);
+      } else {
+        // Ensure final value is exact
+        setDisplayValue(value);
+        animationRef.current = null;
+      }
+    };
+
+    // Reset state to 0 before starting animation
+    setDisplayValue(0);
+    lastDisplayedRef.current = 0;
+
+    // Start animation - each counter starts independently when it enters viewport
+    animationRef.current = requestAnimationFrame(animate);
+
+    // Cleanup function
+    return () => {
+      if (animationRef.current !== null) {
+        cancelAnimationFrame(animationRef.current);
+        animationRef.current = null;
+      }
+    };
+  }, [isInView, value, baseDuration, incrementRate]);
+
+  // Format the display value with proper number formatting
+  const formatValue = (val: number): string => {
+    // For values >= 1000, show with commas; for smaller values, show as integer
+    if (val >= 1000) {
+      return Math.floor(val).toLocaleString();
+    }
+    return Math.floor(val).toString();
+  };
+
+  return (
+    <span 
+      ref={ref}
+      className="inline-block tabular-nums"
+      style={{ 
+        minWidth: 'fit-content',
+        fontVariantNumeric: 'tabular-nums',
+        willChange: 'contents'
+      }}
+      aria-label={`${formatValue(displayValue)}${suffix}`}
+    >
+      {formatValue(displayValue)}{suffix}
+    </span>
+  );
+};
 
 // Course data
 const courses = [
@@ -307,7 +429,10 @@ const TrainingPage = () => {
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                 >
-                  {stat.value}
+                  <AnimatedCounter 
+                    value={stat.numericValue} 
+                    suffix="+"
+                  />
                 </motion.h3>
                 <p className="text-gray-600">{stat.label}</p>
               </motion.div>

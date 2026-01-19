@@ -521,8 +521,8 @@ const HomePage = () => {
         </motion.div>
       </section>
 
-      {/* About Us Section (combined with Our Team) */}
-      <section className="relative py-52 bg-gray-200">
+      {/* About Us Section - Integrated with Team */}
+      <section className="relative py-20 bg-gray-200">
         {/* Background image */}
         <div className="absolute inset-0 z-0">
           <img
@@ -533,133 +533,95 @@ const HomePage = () => {
         </div>
 
         <div className="container-custom relative z-10">
-          <div className="text-center max-w-3xl mx-auto mb-16">
+          {/* Main About Us Content */}
+          <div className="max-w-4xl mx-auto mb-16">
             {/* Animated Heading */}
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="section-title mb-6"
+              className="section-title text-center mb-8"
             >
               About Us
             </motion.h2>
 
-            {/* Main description */}
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-lg text-black mb-6 text-left leading-relaxed"
-            >
-              We are a group of highly qualified professionals with wide experience in
-              multiple business verticals, driven by our passion to deliver high
-              standards of results with the key focus of maximizing business benefits for your organization.
-            </motion.p>
-
-            {/* Mission statement */}
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="text-lg text-black mb-6 text-left leading-relaxed"
-            >
-              Our mission is to ensure the value of time and money spent by our clients by providing 
-              cost-effective solutions that do not compromise on streamlining processes that save our 
-              clients valuable time. We assure and ensure results, keeping your vision and mission in 
-              our minds in every step of the way.
-            </motion.p>
-
-            {/* Vision statement */}
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.6 }}
-              className="text-lg text-black mb-6 text-left leading-relaxed"
-            >
-              Our vision is to deliver cutting-edge solutions that derive transformation in achieving 
-              your business goals. Creating reliable and efficient solutions helps our clients' 
-              businesses to enhance productivity and support growth.
-            </motion.p>
-
-            {/* CTA Button */}
-            <Link
-              to="/about"
-              className="inline-flex items-center text-orange-500 font-medium hover:text-orange-600"
-            >
-              Learn More About Us
-              <ArrowRight size={16} className="ml-2" />
-            </Link>
-          </div>
-
-          {/* Our Team Section */}
-          <div className="mt-20">
-            <div className="text-center mb-10">
-              <motion.h2
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5 }}
-                className="section-title"
-              >
-                Our Team
-              </motion.h2>
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                className="text-black max-w-2xl mx-auto mb-8"
-              >
-                Meet our team driving innovation and excellence
-              </motion.p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-              {teamMembers.map((member, index) => (
-                <motion.div
-                  key={member.name}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  whileHover={{ y: -5, scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.3, delay: index * 0.1 }}
-                  className="bg-white rounded-lg overflow-hidden shadow-lg group cursor-pointer"
-                >
-                  <div className="relative overflow-hidden">
-                    <img 
-                      src={member.image} 
-                      alt={member.name} 
-                      className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                  </div>
-                  <div className="p-6">
-                    <h3 className="text-xl font-semibold">{member.name}</h3>
-                    <p className="text-orange-500">{member.role}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-
+            {/* Company Introduction */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="text-center"
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="mb-8"
             >
-              <Link 
-                to="/team" 
-                className="inline-flex items-center text-orange-500 font-medium hover:text-orange-600"
-              >
-                Learn More About Our Team <ArrowRight size={16} className="ml-2" />
-              </Link>
+              <p className="text-lg text-black leading-relaxed text-center">
+                We are a group of highly qualified professionals with wide experience in
+                multiple business verticals, driven by our passion to deliver high
+                standards of results with the key focus of maximizing business benefits for your organization.
+              </p>
+            </motion.div>
+
+            {/* Team Introduction */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="text-center mb-10"
+            >
+              <h3 className="text-2xl font-semibold text-black mb-4">Meet Our Expert Team</h3>
+              <p className="text-lg text-gray-700 max-w-2xl mx-auto leading-relaxed">
+                Our success is built on the expertise and dedication of our talented professionals. 
+                Each team member brings unique skills and extensive experience to deliver exceptional 
+                results for our clients.
+              </p>
             </motion.div>
           </div>
+
+          {/* Team Members Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
+            {teamMembers.map((member, index) => (
+              <motion.div
+                key={member.name}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                whileHover={{ y: -5, scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3, delay: 0.5 + (index * 0.1) }}
+                className="bg-white rounded-lg overflow-hidden shadow-lg group cursor-pointer"
+              >
+                <div className="relative overflow-hidden">
+                  <img 
+                    src={member.image} 
+                    alt={member.name} 
+                    className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-semibold mb-2">{member.name}</h3>
+                  <p className="text-orange-500">{member.role}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* CTA Links */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.8 }}
+            className="flex flex-wrap justify-center gap-6"
+          >
+            <Link
+              to="/about"
+              className="inline-flex items-center text-orange-500 font-medium hover:text-orange-600 transition-colors"
+            >
+              Learn More About Us
+              <ArrowRight size={16} className="ml-2" />
+            </Link>
+          </motion.div>
         </div>
       </section>
 
